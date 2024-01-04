@@ -1,38 +1,11 @@
-export const Projects = [
-  {
-    title: "Mega Energaya",
-    description:
-      "Mega Energaya is a company that provides services in the field of electrical installation, mechanical and plumbing, and civil construction. This website is built using Next.js and Tailwind CSS.",
-    mainImage: "",
-    secondImage: "",
-    boxImage: "",
-    link: "https://megaenergaya.com",
-  },
-  {
-    title: "Mega Energaya",
-    description:
-      "Mega Energaya is a company that provides services in the field of electrical installation, mechanical and plumbing, and civil construction. This website is built using Next.js and Tailwind CSS.",
-    mainImage: "",
-    secondImage: "",
-    boxImage: "",
-    link: "https://megaenergaya.com",
-  },
-  {
-    title: "Mega Energaya",
-    description:
-      "Mega Energaya is a company that provides services in the field of electrical installation, mechanical and plumbing, and civil construction. This website is built using Next.js and Tailwind CSS.",
-    mainImage: "",
-    secondImage: "",
-    boxImage: "",
-    link: "https://megaenergaya.com",
-  },
-  {
-    title: "Mega Energaya",
-    description:
-      "Mega Energaya is a company that provides services in the field of electrical installation, mechanical and plumbing, and civil construction. This website is built using Next.js and Tailwind CSS.",
-    mainImage: "",
-    secondImage: "",
-    boxImage: "",
-    link: "https://megaenergaya.com",
-  },
-];
+// export const OurProject = [{
+//     title: "Project 1",
+//     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+//     image: "/images/1.jpg",
+//     link: "/work/project-1" 
+//   },
+//   {
+
+//   }
+// ]
+
