@@ -39,7 +39,7 @@ const Home = () => {
           className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:my-7"
         >
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever
           since book.
         </motion.p>
         {/* button */}
