@@ -31,7 +31,7 @@ module.exports = {
       },
       backgroundImage: {
         halfpanda: 'url("/half-panda.png")',
-        pandamobile: 'url("/pandamobile2.png")',
+        pandamobile: 'url("/pandamobile2.webp")',
         panda: 'url("/pandahero.png")',
         explosion: 'url("/bg-explosion.png")',
         circles: 'url("/bg-circles.png")',
