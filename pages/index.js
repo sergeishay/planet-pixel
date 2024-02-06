@@ -10,7 +10,7 @@ import { fadeIn } from "../variants";
 const Home = () => {
   return (
     <div
-      className="h-full w-full flex
+      className="h-screen w-full flex
      flex-col xl:flex-row justify-center
       items-center p-0 mt-[4vh] mx-0 xl:mx-12
       bg-auto   bg-no-repeat bg-left-bottom bg-pandamobile xl:bg-none z-20 
