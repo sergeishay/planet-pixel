@@ -1,6 +1,5 @@
 import React from 'react'
 import { usePathname   } from "next/navigation";
-import {workDB} from '../../contact/works'
 const WorkDetails = () => {
   const pathname = usePathname();
   let companyName = pathname?.split('/').pop();
