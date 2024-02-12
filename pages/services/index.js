@@ -4,7 +4,7 @@ import { fadeIn } from "../../variants";
 
 const Services = () => {
   return (
-    <div className="h-full flex">
+    <div className="h-screen flex">
       <div className="mx-auto">
         <div className="flex flex-col gap-y-4 justify-center items-center w-full h-full  ">
           <div className="text-center">

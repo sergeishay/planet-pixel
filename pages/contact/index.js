@@ -62,7 +62,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="mx-0 h-full w-full flex flex-col-reverse  xl:flex-row mt-3 xl:mt-[10vh] xl:justify-center xl:items-center p-0 3xl:mt-[4vh] xl:mx-12">
+    <div className="mx-0 h-screen w-full flex flex-col-reverse  xl:flex-row mt-3 xl:mt-[10vh] xl:justify-center xl:items-center p-0 3xl:mt-[4vh] xl:mx-12">
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
           className="text-center xl:w-[40%] z-10 flex pl-0 xl:pl-[7vw]  
