@@ -17,6 +17,8 @@ export const HeroParallax = ({
     title: string;
     link: string;
     thumbnail: string;
+    id: string;
+    gallery:[string]
   }[];
 }) => {
   const firstRow = products.slice(0, 5);
@@ -28,18 +30,18 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 40, damping: 10, bounce: 140 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, 500]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, -500]),
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [5, 0]),
     springConfig
   );
   const opacity = useSpring(
@@ -47,17 +49,17 @@ export const HeroParallax = ({
     springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [10, 0]),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 0]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-full py-40 overflow-hidden z-7 antialiased relative flex flex-col self-auto [perspective:1200px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -139,7 +141,7 @@ export const ProductCard = ({
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
       <Link
-        href={product.link}
+        href={`/work/${product.title}`}
         className="block group-hover/product:shadow-2xl "
       >
         <Image

@@ -74,7 +74,7 @@ const About = () => {
   const [index, setIndex] = useState(0);
   console.log(index);
   return (
-    <div className="xl:bg-halfpanda bg-contain bg-bottom-left  w-full h-full bg-no-repeat flex  ">
+    <div className="xl:bg-halfpanda bg-contain bg-bottom-left  w-full h-screen bg-no-repeat flex  ">
       <div className=" mx-0 h-full w-full flex flex-col xl:flex-row mt-[15vh] xl:justify-center xl:items-center p-0 xl:mt-[4vh] xl:mx-12">
         <div className="text-center  xl:w-[60%] z-10 flex pl-0 xl:pl-[7vw]  flex-col align-center gap-3 m-0 justify-center xl:justify-center pt-0 xl:pt-30  xl:text-left h-[38%] xl:h-full ">
           <motion.h1

@@ -1,118 +1,41 @@
+'use client';
 import { HeroParallax } from "../../components/ui/hero-parallax";
-// import { products } from "../../constant/works";
+import { getProjects } from "../../dataConnector";
+import React, { useEffect, useState } from 'react';
 
-const Testimonials = () => {
-  // console.log(products + "testimonials page");
- const products = [
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
+
+
+
+const Testimonials =  () => {
   
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-  ];
+  const [projects, setProjects] = useState([]); // State to store fetched projects
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data } = await getProjects(); // Await the Promise from getProjects
+        // Transform the fetched data into the required format
+        const formattedProjects = data.projects.edges.map(({ node }) => ({
+          title: node.title.replace(/ /g, '-'),
+          link: node.liveLink,
+          thumbnail: node.mainImage,
+          description: node.description,
+          gallery: node.gallery,
+          id: node.id,
+        }));
+        setProjects(formattedProjects); // Update state with formatted data
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchProjects(); // Invoke the async function to fetch and process projects
+  }, []); 
+  console.log(projects);
+
   return (
     <div>
-      <HeroParallax products={products} />
+      <HeroParallax products={projects} />
     </div>
   );
 };
