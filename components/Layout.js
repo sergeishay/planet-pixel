@@ -5,7 +5,6 @@ import TopLeftImg from "./TopLeftImg";
 // import  StarsCanvas  from "./canvas/Stars";
 import { Montserrat } from "@next/font/google";
 
-
 const montserrat = Montserrat({
   subsets: ["latin-ext"],
   variable: "--font-montserrat",
@@ -22,9 +21,14 @@ const Layout = ({ children }) => {
     <div
       className={`page bg-backgroundHome  text-white bg-cover bg-no-repeat bg-center ${montserrat.variable} ${myfont.variable} font-myfont relative`}
     >
-
       <Nav />
-      <Header />
+      <Header>
+        <link rel="manifest" href="/manifest.json" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
+      </Header>
       {children}
       {/* <StarsCanvas /> */}
     </div>
