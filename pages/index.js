@@ -137,7 +137,7 @@ const Home = () => {
             <span className={`font-montserrat font-medium`}>T</span>
             ransforming Ideas <br />
             <span className={`font-montserrat font-medium`}>I</span>nto{" "}
-            <span className="text-lightBlue">Digital Reality.</span>
+            <span className="text-lightBlue">Digital Realitys.</span>
           </motion.h1>
           <motion.p
             variants={fadeIn("down", 0.3)}
