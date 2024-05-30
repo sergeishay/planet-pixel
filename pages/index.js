@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 import Counter from "../components/Counter";
 import ServicesSection from "../components/ServicesSection";
-import Projects from "../components/Projects";
+import Projects from "../components/Projects/Projects";
 import Footer from "../components/Footer";
 
 const products = [

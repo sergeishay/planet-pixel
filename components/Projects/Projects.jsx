@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { fadeIn } from "../../variants";
 import styles from "./style.module.scss";
-import Project from "./components/Project";
+import Project from "./components/project/Project";
 import ProjectsBtn from "../ProjectsBtn";
 const projects = [
   {
