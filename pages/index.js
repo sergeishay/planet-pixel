@@ -1,132 +1,133 @@
 import StarsCanvas from "../components/canvas/Stars";
 import Image from "next/image";
-
-import ParticlesContainer from "../components/ParticlesContainer";
+import AboutSection from "../components/AboutSection";
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
-import { HeroParallax } from "../components/ui/hero-parallax";
+import Counter from "../components/Counter";
+import ServicesSection from "../components/ServicesSection";
+import Projects from "../components/Projects/Projects";
+import Footer from "../components/Footer";
 
+const products = [
+  {
+    title: "Aleftaf",
+    link: "aleftaf",
+    thumbnail: "/aleftaf.webp",
+  },
+  {
+    title: "Cotton-Club",
+    link: "cotton-club",
+    thumbnail: "/cotton-club.webp",
+  },
 
- const products = [
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-    {
-      title: "Aleftaf",
-      link: "aleftaf",
-      thumbnail: "/aleftaf.webp",
-    },
-    {
-      title: "Cotton-Club",
-      link: "cotton-club",
-      thumbnail: "/cotton-club.webp",
-    },
-  
-    {
-      title: "Haison",
-      link: "haison",
-      thumbnail: "/haison.webp",
-    },
-    {
-      title: "Unicorn",
-      link: "unicorn",
-      thumbnail: "/Unicorn.webp",
-    },
-  ];
+  {
+    title: "Haison",
+    link: "haison",
+    thumbnail: "/haison.webp",
+  },
+  {
+    title: "Unicorn",
+    link: "unicorn",
+    thumbnail: "/Unicorn.webp",
+  },
+  {
+    title: "Aleftaf",
+    link: "aleftaf",
+    thumbnail: "/aleftaf.webp",
+  },
+  {
+    title: "Cotton-Club",
+    link: "cotton-club",
+    thumbnail: "/cotton-club.webp",
+  },
+
+  {
+    title: "Haison",
+    link: "haison",
+    thumbnail: "/haison.webp",
+  },
+  {
+    title: "Unicorn",
+    link: "unicorn",
+    thumbnail: "/Unicorn.webp",
+  },
+  {
+    title: "Aleftaf",
+    link: "aleftaf",
+    thumbnail: "/aleftaf.webp",
+  },
+  {
+    title: "Cotton-Club",
+    link: "cotton-club",
+    thumbnail: "/cotton-club.webp",
+  },
+
+  {
+    title: "Haison",
+    link: "haison",
+    thumbnail: "/haison.webp",
+  },
+  {
+    title: "Unicorn",
+    link: "unicorn",
+    thumbnail: "/Unicorn.webp",
+  },
+  {
+    title: "Aleftaf",
+    link: "aleftaf",
+    thumbnail: "/aleftaf.webp",
+  },
+  {
+    title: "Cotton-Club",
+    link: "cotton-club",
+    thumbnail: "/cotton-club.webp",
+  },
+
+  {
+    title: "Haison",
+    link: "haison",
+    thumbnail: "/haison.webp",
+  },
+  {
+    title: "Unicorn",
+    link: "unicorn",
+    thumbnail: "/Unicorn.webp",
+  },
+  {
+    title: "Aleftaf",
+    link: "aleftaf",
+    thumbnail: "/aleftaf.webp",
+  },
+  {
+    title: "Cotton-Club",
+    link: "cotton-club",
+    thumbnail: "/cotton-club.webp",
+  },
+
+  {
+    title: "Haison",
+    link: "haison",
+    thumbnail: "/haison.webp",
+  },
+  {
+    title: "Unicorn",
+    link: "unicorn",
+    thumbnail: "/Unicorn.webp",
+  },
+];
 const Home = () => {
   return (
     <div className="flex flex-col">
       <div
-        className="h-screen w-full relative flex
-     flex-col xl:flex-row justify-center
-      items-center p-0 mt-[4vh] mx-0 xl:mx-12
-      bg-auto   bg-no-repeat bg-left-bottom bg-pandamobile xl:bg-none z-20 "
-      >
-        {/* text */}
-        <div className="text-center z-10 flex  flex-col align-center gap-4 m-0 justify-end xl:justify-center xl:pt-30  xl:pl-[7vw] xl:text-left h-full container mx-2 xl:mx-auto">
+        className=" h-[90vh] md:h-[120vh] w-full relative flex
+          flex-col xl:flex-row xl:justify-start
+          xl:items-start p-0  mx-0 bg-scroll opacity-100 "
+         >
+        <div className=" text-center z-10 flex  flex-col  gap-4 m-0 justify-start pt-[180px]
+         xl:justify-center  xl:aling-start xl:pl-[7vw] xl:text-left h-full
+         mx-2 xl:mx-[2vw]">
           <motion.h1
             variants={fadeIn("down", 0.4)}
             initial="hidden"
@@ -137,21 +138,17 @@ const Home = () => {
             <span className={`font-montserrat font-medium`}>T</span>
             ransforming Ideas <br />
             <span className={`font-montserrat font-medium`}>I</span>nto{" "}
-            <span className="text-lightBlue">Digital Reality.</span>
+            <span className="text-lightBlue">Digital Realitys.</span>
           </motion.h1>
           <motion.p
             variants={fadeIn("down", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:my-7"
-          >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since book.
+            className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:my-7">
+            Welcome aboard Planet-Pixel, your launchpad to the digital stars! Here, we don&apos;t just build websites, we launch your epic story into the cosmic web. Imagine your project as a shooting star, shining across the digital sky, created by a team that dreams big and codes bigger. 
           </motion.p>
-          {/* button */}
-          <div className="flex flex-row align-center justify-center xl:justify-start ">
+          <div className="flex flex-row align-center gap-3 justify-center xl:justify-start ">
             <ProjectsBtn
               backgroundColor="lightBlue"
               text="let`s Talk"
@@ -165,20 +162,22 @@ const Home = () => {
           </div>
         </div>
         <motion.div
-          // variants={fadeIn("right", 0.5)}
-          // initial="hidden"
-          // animate="show"
-          // exit="hidden"
-          // transition={{ duration: 1 , ease: "easeInOut" }}
-          className="flex justify-center mr-[8vw]  xl:justify-start w-full h-full "
+          className="flex absolute justify-center  w-full h-full "
         >
-          {/* Avatar */}
           <Avatar />
-        <StarsCanvas />
+          <StarsCanvas />
         </motion.div>
       </div>
-      <HeroParallax products={products} />
 
+
+
+
+      <Counter />
+      <AboutSection />
+      <ServicesSection />
+
+      <Projects />
+      <Footer />
     </div>
   );
 };

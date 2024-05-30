@@ -1,0 +1,61 @@
+.sliderContainer {
+  position: relative;
+  overflow: hidden; /* Ensure the container hides overflow content */
+  height: 100%; /* Ensure it takes the full height of the screen */
+}
+
+.slider {
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* Center the text lines vertically */
+  height: 100%; /* Ensure it takes the full height of the slider container */
+}
+
+.slider span {
+  margin: 0;
+  background: linear-gradient(to right, #7d13ff 0%, #2c52d1 50%, #15bffd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Ensure text color is transparent */
+  font-size: 140px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.slider span img {
+  margin-left: 20px; /* Adjust space between text and star image */
+}
+
+@media screen and (max-width: 768px) {
+  .slider span {
+    font-size: 70px; /* Adjust font size for mobile */
+  }
+
+  .md\\:hidden {
+    display: flex; /* Display additional lines on mobile */
+  }
+
+  .slider div {
+    display: flex;
+    flex-direction: column; /* Ensure lines are stacked vertically */
+    align-items: center;
+  }
+
+  .slider span {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .md\\:hidden {
+    display: none; /* Hide additional lines on desktop */
+  }
+}

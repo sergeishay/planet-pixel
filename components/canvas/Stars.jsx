@@ -10,7 +10,7 @@ const generateRandomPointsInSphere = (numPoints, radius) => {
     const index = i * 3;
     let x, y, z;
     do {
-      x = 2 * Math.random() - 1;
+      x = 4 * Math.random() - 1;
       y = 2 * Math.random() - 1;
       z = 2 * Math.random() - 1;
     } while (x * x + y * y + z * z > 1);
@@ -27,7 +27,7 @@ const Stars = (props) => {
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 18;
-    ref.current.rotation.y -= delta / 28;
+    ref.current.rotation.y -= delta / 18;
   });
 
   return (
@@ -48,7 +48,7 @@ const Stars = (props) => {
 const StarsCanvas = () => {
   return (
     <div className='w-full h-full absolute inset-0 -z-1'>
-      <Canvas camera={{ position: [0, 0, 5.8] }}>  {/* Moved camera further away */}
+      <Canvas camera={{ position: [0, 0,5.8] }}>  {/* Moved camera further away */}
         <Suspense fallback={null}>
           <Stars />
         </Suspense>
