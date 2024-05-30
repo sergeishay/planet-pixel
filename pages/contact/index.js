@@ -5,6 +5,9 @@ import { fadeIn } from "../../variants";
 import { EarthCanvas } from "../../components/canvas/";
 import { slideIn } from "../../variants";
 import { StarsCanvas } from "../../components/canvas/";
+
+
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({

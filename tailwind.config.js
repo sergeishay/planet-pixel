@@ -38,6 +38,10 @@ module.exports = {
         circleStar: 'url("/circle-star.svg")',
         site: 'url("/site-bg.svg")',
         backgroundHome: 'url("/background-desctop.webp")',
+        backgroundDescNew: 'url("/newBackground-desc.jpg")',
+        backgroundDescNewPande: 'url("/newPanda.jpg")',
+        servicebackground: 'url("/project-bg.webp")',
+        heroPanda: 'url("/heropandamob3.webp")',
       },
       animation: {
         'spin-slow': 'spin 6s linear infinite',
@@ -46,7 +50,8 @@ module.exports = {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         sora: [`var(--font-sora)`, 'sans-serif'],
         myfont : [`var(--font-myfont)`, 'sans-serif'],
-        montserrat : [`var(--font-montserrat)`, 'sans-serif']
+        montserrat : [`var(--font-montserrat)`, 'sans-serif'],
+        pirulen : [`var(--font-pirulen)`, 'sans-serif'],
       },
     },
   },

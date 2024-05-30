@@ -42,14 +42,14 @@ const Nav = () => {
       <div
         className="flex w-full xl:flex-col items-center justify-between 
       xl:justify-center gap-y-10 px-5 xl:px-6 mb-5  md:px-40  h-[80] xl:h-max py-3 xl:py-5 
-      text-2xl xl:text-2xl rounded-full bg-white/20 backdrop-blur-sm"
+      text-2xl xl:text-2xl rounded-full bg-white/40 backdrop-blur-sm "
       >
         {navData.map((link, index) => {
           return (
             <Link
               className={`${
                 link.path === pathname &&
-                "text-lightBlue transition-all duration-300"
+                "text-lightBlue   transition-all duration-300"
               } relative flex item-center group
               hover:text-lightBlue`}
               href={link.path}
@@ -65,7 +65,7 @@ const Nav = () => {
               </div>
 
               {/* tooltip */}
-              <div className="m-0 p-0" >{link.icon}</div>
+              <div className="m-0 p-0 " >{link.icon}</div>
             </Link>
           );
         })}

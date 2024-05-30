@@ -1,0 +1,53 @@
+.project{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+    border-top: 2px solid rgb(201, 201, 201);
+    border-image: linear-gradient(to right, #7d13ff 0%,  #15bffd 100%) 1 0 0 0 ;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    h2{
+        font-size: 60px;
+        margin: 0px;
+        font-weight: 400;
+        transition: all 0.4s;
+    }
+
+    p{
+        transition: all 0.4s;
+        font-weight: 300;
+    }
+
+    &:last-of-type{
+        border-bottom: 1px solid rgb(201, 201, 201);
+        border-image: linear-gradient(to right, #7d13ff 0%,  #15bffd 100%) 1 0 0 0 ;
+    }
+
+    &:hover{
+        opacity: 0.5;
+
+        h2{
+            transform: translateX(-10px);
+        }
+
+        p{
+            transform: translateX(10px);
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .project{
+        padding-top: 40px;
+        flex-direction: column;
+    }
+
+    .project{
+        h2{
+            font-size: 40px;
+        }
+    }
+    
+}
