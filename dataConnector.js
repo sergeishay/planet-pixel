@@ -41,6 +41,11 @@ export async function getProjects() {
   }
   
 
+
+
+
+  
+
   // Assuming you have a function to fetch data from your GraphQL API
 export async function getProjectBySlug(slug) {
   const query = `

@@ -10,11 +10,11 @@ const Avatar = () => {
       bg-no-repeat bg-right xl:bg-right
       "
     >
-      {/* <Image src={"/newPanda.jpg"}
-      width={500}
-      height={500}
-      className="w-full h-full mix-blend-luminosity	z-10	pl-20"
-      alt="panda" /> */}
+      <Image src={"/Ellipse.png"}
+      width={300}
+      height={300}
+      className="relative top-0 right-0 w-full h-full -mr-10	z-10	"
+      alt="panda" />
     </div>
   );
 };

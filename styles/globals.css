@@ -59,3 +59,84 @@
     rgba(21, 191, 253, 1) 100% );
   }
 }
+.gradient-border {
+  border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  border-radius: 5px !important ; /* Ensures border-radius is applied by default */
+}
+
+.gradient-border:focus {
+  border-image-source: linear-gradient(to right, #7d13ff 0%, #15bffd 100%);
+  border-width: 2px;
+  border-image-slice: 1;
+  border-radius: 5px !important; /* Ensures border-radius is applied on focus */
+}
+
+
+.button-default {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid white;
+  transition: border 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px !important;
+
+}
+
+.button-hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid white;
+  transition: border 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border-radius: 5px !important;
+
+}
+
+.button-hover:hover {
+  border-image-source: linear-gradient(to right, #7d13ff 0%, #15bffd 100%);
+  border-image-slice: 1;
+  color: transparent;
+  border-radius: 5px !important;
+
+}
+
+.button-hover:hover::after {
+  content: '\2192'; /* Right arrow unicode character */
+  position: absolute;
+  color: white;
+  right: 15px;
+  transform: translateX(-10px);
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 5px !important;
+
+}
+
+.button-hover span {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  border-radius: 5px !important;
+
+}
+
+.button-hover:hover span {
+  opacity: 0;
+}
+
+.button-hover::after {
+  content: '\2192'; /* Right arrow unicode character */
+  position: absolute;
+  color: white;
+  right: 15px;
+  transform: translateX(-30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 5px !important;
+}
+
+

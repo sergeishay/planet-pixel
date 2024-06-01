@@ -1,115 +1,65 @@
-// data
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
-import { Pagination } from "swiper";
-import { motion } from "framer-motion";
-import { fadeIn } from "../variants";
-import "swiper/css/navigation";
+import { useState, useEffect } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
-const workSlides = {
-  slides: [
-    {
-      images: [
-        {
-          id: "aleftaf",
-          title: "Aleftaf",
-          imgUrl: "/aleftaf.webp",
-        },
-        {
-          id: "cotton-club",
-          title: "Cotton-Club",
-          imgUrl: "/cotton-club.webp",
-        },
-      ],
-    },
-    {
-      images: [
-        {
-          id: "haison",
-          title: "Haison",
-          imgUrl: "/haison.webp",
-        },
-        {
-          id: "unicorn",
-          title: "Unicorn",
-          imgUrl: "/Unicorn.webp",
-        },
-      ],
-    },
-  ],
-};
+import styles from "./work.module.scss"; // Import the styles
 
-const WorkSlider = () => {
+const WorkSlider = ({ projects }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % (projects.length / 4)); // Move to the next set of projects
+    }, 3000); // Slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [projects.length]);
+
+  const handlePaginationClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const slides = [];
+  for (let i = 0; i < projects.length; i += 4) {
+    slides.push(projects.slice(i, i + 4));
+  }
+
   return (
-    <Swiper
-      grabCursor={true}
-      loop={true}
-      breakpoints={{
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        640: {
-          slidesPerView: 3,
-          spaceBetween: 15,
-        },
-        // 768: {
-        //   slidesPerView: 3,
-        //   spaceBetween: 40,
-        // },
-        // 1024: {
-        //   slidesPerView: 4,
-        //   spaceBetween: 50,
-        // },
-      }}
-      freeMode={true}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Pagination]}
-      className={`w-[350px] md:w-[560px] h-[100%] justify-center items-center flex`}
-    >
-      {workSlides.slides.map((slide, index) => {
-        return (
-          <SwiperSlide
+    <div className={styles.slider}>
+      <div className={styles.slides} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        {slides.map((slide, index) => (
+          <div key={index} className={styles.slide}>
+            {slide.map((project) => (
+              <div key={project.id} className={styles["project-card"]}>
+                <div className={styles["image-container"]}>
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.title}
+                    fill
+                    className="transition-opacity duration-300 hover:opacity-80"
+                  />
+                </div>
+                <div className={`${styles.overlay} opacity-0 hover:opacity-100 transition-opacity duration-300`}>
+                  <span className="text-[#00C2FF] text-lg">Live Project</span>
+                  <Link href={project.link}>
+                    <BsArrowRight className="text-white text-2xl mt-2" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className={styles.pagination}>
+        {slides.map((_, index) => (
+          <div
             key={index}
-            className="w-full h-full justify-center items-center"
-          >
-            <div
-              className=" "
-            >
-              {slide.images.map((image, index) => {
-                return (
-                  <div key={index} className="w-[250] h-[250px]">
-                    <Image
-                      src={image.imgUrl}
-                      alt={image.title}
-                      width={400}
-                      height={250}
-                    />
-                    <div>
-                      <div>{slide.images.title}</div>
-                      <p>{slide.images.imgUrl}</p>
-                    </div>
-                    <p className="text-orange-700">{image.title}</p>
-                    <div className="text-3xl">
-                      <Link href={`/work/${image.id}`}>
-                        <BsArrowRight />
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+            className={`${styles.dot} ${index === currentIndex ? styles.active : ""}`}
+            onClick={() => handlePaginationClick(index)}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

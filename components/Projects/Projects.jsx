@@ -11,22 +11,22 @@ const projects = [
   {
     title: "Mega Energya",
     src: "aleftaf.webp",
-    color: "#7D13FF",
+    color: "rgba(255, 255, 255, 0.5)",
   },
   {
     title: "Cotton-Club",
     src: "cotton-club.webp",
-    color: "#7D13FF",
+    color: "rgba(255, 255, 255, 0.5)",
   },
   {
     title: "Haison",
     src: "haison.webp",
-    color: "#7D13FF",
+    color: "rgba(255, 255, 255, 0.5)",
   },
   {
     title: "Unicorn",
     src: "Unicorn.webp",
-    color: "#7D13FF",
+    color: "rgba(255, 255, 255, 0.5)",
   },
 ];
 
@@ -51,7 +51,8 @@ export default function Projects() {
   const [isMobile, setIsMobile] = useState(false);
   const { index } = modal;
   const modalContainer = useRef(null);
-
+  const cursor = useRef(null);
+  const cursorLabel = useRef(null);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -161,11 +162,7 @@ export default function Projects() {
       {/* <Rounded>
         <p>More work</p>
       </Rounded> */}
-      <ProjectsBtn
-              backgroundColor="lightBlue"
-              text="More Work"
-              url="contact"
-            />
+      <ProjectsBtn backgroundColor="lightBlue" text="More Work" url="contact" />
       {!isMobile && (
         <>
           <motion.div
@@ -192,21 +189,23 @@ export default function Projects() {
                 );
               })}
             </div>
+            <motion.div
+              ref={cursor}
+              className={styles.cursor}
+              variants={scaleAnimation}
+              initial="initial"
+              animate={modal.active ? "enter" : "closed"}
+            ></motion.div>
+            <motion.div
+              ref={cursorLabel}
+              className={styles.cursorLabel}
+              variants={scaleAnimation}
+              initial="initial"
+              animate={modal.active ? "enter" : "closed"}
+            >
+              View
+            </motion.div>
           </motion.div>
-          <motion.div
-            className="cursor"
-            variants={scaleAnimation}
-            initial="initial"
-            animate={modal.active ? "enter" : "closed"}
-          ></motion.div>
-          {/* <motion.div
-            className="cursorLabel"
-            variants={scaleAnimation}
-            initial="initial"
-            animate={modal.active ? "enter" : "closed"}
-          >
-            View
-          </motion.div> */}
         </>
       )}
     </div>

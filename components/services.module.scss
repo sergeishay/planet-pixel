@@ -8,6 +8,7 @@
   position: relative;
   white-space: nowrap;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   flex-direction: column;
   align-items: center; /* Center the text lines vertically */
@@ -16,7 +17,7 @@
 
 .slider span {
   margin: 0;
-  background: linear-gradient(to right, #7d13ff 0%, #2c52d1 50%, #15bffd 100%);
+  background: linear-gradient(to right, #7D13FF 0%, #2C52D1 20%, #15BFFD 40%, #7D13FF 60%, #2C52D1 79%, #15BFFD 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -24,6 +25,7 @@
   font-size: 140px;
   font-weight: 400;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
 }
 
