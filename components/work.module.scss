@@ -1,102 +1,118 @@
-.slider {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-    justify-content:center;
-    align-items: center;
-    margin-bottom:30px;
-  }
-  
-  .slide {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
-    min-width: 100%;
-  }
-  
-  .project-card {
-    width: 100%;
-    height:31vh;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .image-container img {
-    object-fit: cover;
-  }
-  
-  .project-card .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .project-card:hover .overlay {
-    opacity: 1;
-  }
-  
-  .project-card .overlay span {
-    color: white;
-    font-size: 18px;
-  }
-  
-  .project-card .overlay svg {
-    color: white;
-    font-size: 24px;
-    margin-top: 10px;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-  }
-  
-  .dot {
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  gap: 10px;
+  padding-bottom: 15px;
+}
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectCard {
+  width: 250px;
+  height: 34vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.imageContainer img {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.projectCard .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin: 10px;
+}
+
+.projectCard:hover .overlay {
+  opacity: 1;
+  padding: 10px;
+}
+
+.projectCard .overlay span {
+  color: #00C2FF;
+  font-size: 18px;
+}
+
+.projectCard .overlay svg {
+  color: white;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Slick Dots Styles */
+.slick-dots {
+  bottom: 20px; /* Adjust as needed */
+  li {
     width: 10px;
     height: 10px;
-    background-color: #bbb;
-    border-radius: 50%;
     margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  .dot.active {
-    background-color: #717171;
-  }
-  @media screen and (max-width: 768px){
-    .project-card {
-      // width: 170px;
-      height:120px;
-
+    button {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      &:before {
+        font-size: 0; /* Hide the default dot content */
+        color: transparent;
+      }
+    }
+    &.slick-active div {
+      background-color: #717171 !important;
     }
   }
+}
+
+/* Specific styles for the custom dots */
+.slick-dots li button:before {
+  font-size: 10px;
+  color: transparent;
+}
+
+.slick-dots li.slick-active button:before {
+  color: transparent;
+}
+
+.slick-dots li button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+}
+
+.slick-dots li.slick-active div {
+  background-color: #717171 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .projectCard {
+    height: 120px;
+  }
+}

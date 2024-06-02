@@ -9,7 +9,7 @@ import Counter from "../components/Counter";
 import ServicesSection from "../components/ServicesSection";
 import Projects from "../components/Projects/Projects";
 import Footer from "../components/Footer";
-
+import UnderFooter from "../components/UnderFooter";
 const products = [
   {
     title: "Aleftaf",
@@ -186,6 +186,7 @@ const Home = () => {
 
       <Projects />
       <Footer />
+      <UnderFooter />
     </div>
   );
 };

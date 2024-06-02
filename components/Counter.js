@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 
 const Counter = () => {
   return (
-    <div className="flex flex-1 xl:gap-x-6 justify-center align-middle gap-5 -mt-[188px] md:-mt-0 items-center px-6 py-5 w-full bg-white/20	z-20 ">
+    <div className="flex flex-1 xl:gap-x-6 justify-center align-middle gap-5 -mt-[0%] md:-mt-0 items-center px-6 py-5 w-full bg-white/20	z-20 ">
       <div className="flex flex-col xl:flex-row xl:gap-x-6 " >
         <div className=" items-center text-center justify-center mb-4 ">
           <div className="text-2xl  xl:text-4xl font-regular text-sky-500 mb-2">

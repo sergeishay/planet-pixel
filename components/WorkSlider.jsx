@@ -1,64 +1,79 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Slider from "react-slick";
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./work.module.scss"; // Import the styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const WorkSlider = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (projects.length / 4)); // Move to the next set of projects
-    }, 3000); // Slide every 3 seconds
+  const settings = {
+    className: "center",
+    centerMode: false,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 2,
+    speed: 500,
+    rows: 2,
+    slidesPerRow: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: true,
+    beforeChange: (oldIndex, newIndex) => setCurrentIndex(newIndex),
+    appendDots: dots => (
+      <div
 
-    return () => clearInterval(interval);
-  }, [projects.length]);
-
-  const handlePaginationClick = (index) => {
-    setCurrentIndex(index);
+        style={{
+          backgroundColor: "transparent",
+          borderRadius: "10px",
+          padding: "10px",
+          marginBottom:"20px",
+          marginTop:"20px",
+        }}
+      >
+        <ul style={{ marginBottom: "-10px", display: "flex", justifyContent: "center", zIndex:"20" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: i => (
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          backgroundColor: i === currentIndex ? "#717171" : "#bbb",
+          borderRadius: "50%",
+          display: "inline-block",
+          margin: "10px 5px",
+        }}
+      ></div>
+    )
   };
 
-  const slides = [];
-  for (let i = 0; i < projects.length; i += 4) {
-    slides.push(projects.slice(i, i + 4));
-  }
-
   return (
-    <div className={styles.slider}>
-      <div className={styles.slides} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {slides.map((slide, index) => (
-          <div key={index} className={styles.slide}>
-            {slide.map((project) => (
-              <div key={project.id} className={styles["project-card"]}>
-                <div className={styles["image-container"]}>
-                  <Image
-                    src={project.thumbnail}
-                    alt={project.title}
-                    fill
-                    className="transition-opacity duration-300 hover:opacity-80"
-                  />
-                </div>
-                <div className={`${styles.overlay} opacity-0 hover:opacity-100 transition-opacity duration-300`}>
-                  <span className="text-[#00C2FF] text-lg">Live Project</span>
-                  <Link href={project.link}>
-                    <BsArrowRight className="text-white text-2xl mt-2" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+    <div className={styles.sliderContainer}>
+      <Slider {...settings}>
+        {projects.map((project) => (
+          <div key={project.id} className={styles.projectCard}>
+            <div className={styles.imageContainer}>
+              <Image
+                src={project.thumbnail}
+                alt={project.title}
+                fill
+                style={{ objectFit: "cover" }}
+                className="transition-opacity duration-300 hover:opacity-80"
+              />
+            </div>
+            <div className={`${styles.overlay} opacity-0 hover:opacity-100 transition-opacity duration-300`}>
+              <span className="text-[#00C2FF] text-lg">Live Project</span>
+              <Link href={project.link}>
+                <BsArrowRight className="text-white text-2xl mt-2" />
+              </Link>
+            </div>
           </div>
         ))}
-      </div>
-      <div className={styles.pagination}>
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            className={`${styles.dot} ${index === currentIndex ? styles.active : ""}`}
-            onClick={() => handlePaginationClick(index)}
-          />
-        ))}
-      </div>
+      </Slider>
     </div>
   );
 };

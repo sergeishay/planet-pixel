@@ -28,9 +28,9 @@ const Work = () => {
   }, []);
 
   return (
-    <div className="h-[100vh] flex-1 flexflex-col mx-[15px] items-center">
-      <div className="flex flex-col xl:flex-row gap-y-4 justify-center items-center h-full">
-        <div className="xl:text-left mb-8 xl:w-[40%] xl:ml-5">
+    <div className="h-[100vh] flex-1 flexflex-col mx-[15px] items-center pt-[5vh]">
+      <div className="flex flex-col xl:flex-row  justify-center items-center h-full">
+        <div className="xl:text-left mb-8 xl:w-[50%] xl:ml-5">
           <motion.h1
             variants={fadeIn("down", 0.4)}
             initial="hidden"
@@ -44,7 +44,7 @@ const Work = () => {
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since book.
           </p>
         </div>
-        <div className="w-full xl:w-[60%] flex justify-center xl:mx-[8vw]">
+        <div className="w-full xl:w-[50%] flex justify-center xl:mx-[8vw]">
           {
             projects.length > 0 ? (
               <WorkSlider projects={projects} />
