@@ -11,6 +11,7 @@ const ServicesSection = () => {
   const fourthLineRef = useRef(null);
   const fifthLineRef = useRef(null);
   const sixthLineRef = useRef(null);
+  const speed = 0.1;
 
   useEffect(() => {
     setIsClient(true);
@@ -24,15 +25,11 @@ const ServicesSection = () => {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -20 * t)),
     });
 
-    let offset = 0;
-    const baseSpeed = 0.001; // Adjust this value to change the base speed (continuous movement)
-    const speed = 0.002; // Adjust this value to change the additional speed on scroll
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
 
-      offset += baseSpeed + window.scrollY * speed;
+      const offset = window.scrollY * speed;
       if (firstLineRef.current && secondLineRef.current && thirdLineRef.current && fourthLineRef.current && fifthLineRef.current && sixthLineRef.current) {
         firstLineRef.current.style.transform = `translateX(${offset % window.innerWidth}px)`;
         secondLineRef.current.style.transform = `translateX(${-offset % window.innerWidth}px)`;
