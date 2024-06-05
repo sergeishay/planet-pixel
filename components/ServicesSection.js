@@ -48,7 +48,7 @@ const ServicesSection = () => {
   }, [isClient]);
 
   return (
-    <div className="relative flex justify-center items-center font-pirulen overflow-hidden h-[800px] bg-servicebackground bg-cover">
+    <div className="relative flex justify-center items-center font-pirulen overflow-hidden md:h-[800px] 2xl:h-[1200px] bg-servicebackground bg-cover">
       {isClient && (
         <div className={styles.sliderContainer}>
           <div className={styles.slider}>

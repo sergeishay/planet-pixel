@@ -5,7 +5,7 @@ import ProjectsBtn from "./ProjectsBtn";
 
 const AboutSection = () => {
   return (
-    <div className='justify-center  align-middle items-center w-full py-[12vh]'>
+    <div className='justify-center  align-middle items-center w-full pt-[15vh] pb-[12vh]'>
         <div className="w-full  text-center z-10 flex flex-col align-center
          gap-4 m-0 p-0 justify-center xl:justify-center xl:pt-30
          xl:px-[7vw] xl:text-center h-full px-2">
@@ -31,16 +31,7 @@ const AboutSection = () => {
           </motion.p>
           {/* button */}
           <div className="flex flex-row align-center gap-3 justify-center w-full xl:mb-[100px] ">
-            <ProjectsBtn
-              backgroundColor="lightBlue"
-              text="let`s Talk"
-              url="contact"
-            />
-            <ProjectsBtn
-              backgroundColor="bg-lightBlue"
-              text="Our Projects"
-              url="projects"
-            />
+
           </div>
         </div>
     </div>

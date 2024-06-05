@@ -1,5 +1,6 @@
 import StarsCanvas from "../components/canvas/Stars";
 import Image from "next/image";
+import Link from "next/link";
 import AboutSection from "../components/AboutSection";
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
@@ -10,6 +11,7 @@ import ServicesSection from "../components/ServicesSection";
 import Projects from "../components/Projects/Projects";
 import Footer from "../components/Footer";
 import UnderFooter from "../components/UnderFooter";
+import Rounded from "../components/common/RoundedButton";
 const products = [
   {
     title: "Aleftaf",
@@ -124,10 +126,12 @@ const Home = () => {
         className=" h-[90vh] md:h-[120vh] w-full relative flex
           flex-col xl:flex-row xl:justify-start
           xl:items-start p-0  mx-0 bg-scroll opacity-100 "
-         >
-        <div className=" text-center z-10 flex  flex-col  gap-4 m-0 justify-start pt-[180px]
+      >
+        <div
+          className=" text-center z-10 flex  flex-col  gap-4 m-0 justify-start pt-[180px]
          xl:pt-[20px]  xl:justify-center  xl:aling-start xl:pl-[7vw] xl:text-left h-full
-         mx-2 xl:mx-[2vw]">
+         mx-2 xl:mx-[2vw]"
+        >
           <motion.h1
             variants={fadeIn("down", 0.4)}
             initial="hidden"
@@ -145,40 +149,46 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-2 xl:mt-3">
-            Welcome aboard Planet-Pixel, your launchpad to the digital stars! Here, we don&apos;t just build websites, we launch your epic story into the cosmic web. Imagine your project as a shooting star, shining across the digital sky, created by a team that dreams big and codes bigger. 
+            className="max-w-sm xl:max-w-3xl text-[18px] xl:text-[1.2vw] leading-tight mx-auto text-white xl:mx-0 mb-2 xl:mt-3"
+          >
+            Welcome aboard Planet-Pixel, your launchpad to the digital stars!
+            Here, we don&apos;t just build websites, we launch your epic story
+            into the cosmic web. Imagine your project as a shooting star,
+            shining across the digital sky, created by a team that dreams big
+            and codes bigger.
           </motion.p>
           <motion.p
             variants={fadeIn("down", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-2xl font-medium text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:mb-2">
-           ARE YOU BElTED? BECAUSE WE׳RE ON OUR WAY.
-           </motion.p>
+            className="max-w-sm xl:max-w-2xl font-medium text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:mb-2"
+          >
+            ARE YOU BElTED? BECAUSE WE׳RE ON OUR WAY.
+          </motion.p>
           <div className="flex flex-row align-center gap-3 justify-center xl:justify-start ">
-            <ProjectsBtn
-              backgroundColor="lightBlue"
-              text="let`s Talk"
-              url="contact"
-            />
-            <ProjectsBtn
-              backgroundColor="bg-lightBlue"
-              text="Our Projects"
-              url="projects"
-            />
+            <Rounded
+            backgroundButtonColor="lightBlue"
+            >
+              <Link href="/contact" className="text-white hover:text-white">
+                <p>Let`s Talk</p>
+              </Link>
+            </Rounded>
+            <Rounded
+            backgroundButtonColor="lightBlue"
+            >
+              <Link href="/work" className="text-white hover:text-white">
+                <p>Our Projects</p>
+              </Link>
+            </Rounded>
+
           </div>
         </div>
-        <motion.div
-          className="flex absolute justify-center  w-full h-full "
-        >
+        <motion.div className="flex absolute justify-center  w-full h-full ">
           <Avatar />
           <StarsCanvas />
         </motion.div>
       </div>
-
-
-
 
       <Counter />
       <AboutSection />

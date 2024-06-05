@@ -52,11 +52,13 @@
     background: linear-gradient(129deg, rgba(123, 37, 231, 1) 0%,
     rgba(44, 82, 209, 1) 50%,
     rgba(21, 191, 253, 1) 100% );
+    border-radius: 5px;
   }
   .primary-border {
     border:1px solid linear-gradient(129deg, rgba(123, 37, 231, 1) 0%,
     rgba(44, 82, 209, 1) 50%,
     rgba(21, 191, 253, 1) 100% );
+    border-radius: 5px;
   }
 }
 .gradient-border {
@@ -74,6 +76,13 @@
   border-image-slice: 1;
   border-radius: 5px !important; /* Ensures border-radius is applied on focus */
 }
+
+.gradient-border:focus::after{
+  border-radius: 5px !important; /* Ensures border-radius is applied on focus */
+}
+
+
+
 
 
 .button-default {

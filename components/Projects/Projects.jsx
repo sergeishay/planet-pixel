@@ -4,6 +4,7 @@ import Rounded from "../common/RoundedButton";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { fadeIn } from "../../variants";
+import Link from "next/link";
 import styles from "./style.module.scss";
 import Project from "./components/project/Project";
 import ProjectsBtn from "../ProjectsBtn";
@@ -159,10 +160,11 @@ export default function Projects() {
           />
         ))}
       </div>
-      {/* <Rounded>
-        <p>More work</p>
-      </Rounded> */}
-      <ProjectsBtn backgroundColor="lightBlue" text="More Work" url="contact" />
+      <Rounded backgroundButtonColor="lightBlue">
+        <Link href="/work" className="text-white hover:text-white">
+          <p>More Work</p>
+        </Link>
+      </Rounded>
       {!isMobile && (
         <>
           <motion.div
