@@ -43,6 +43,8 @@ module.exports = {
         backgroundDescNewPande: 'url("/newPanda.jpg")',
         servicebackground: 'url("/project-bg.webp")',
         heroPanda: 'url("/heropandamob3.webp")',
+        whyBackground: 'url("/whyBackground.png")',
+        whyBackgroundMobile: 'url("/whyBackgroundMobile.png")',
       },
       animation: {
         'spin-slow': 'spin 6s linear infinite',
@@ -53,6 +55,19 @@ module.exports = {
         myfont : [`var(--font-myfont)`, 'sans-serif'],
         montserrat : [`var(--font-montserrat)`, 'sans-serif'],
         pirulen : [`var(--font-pirulen)`, 'sans-serif'],
+      },
+      inset: {
+        '10': '2.5rem',
+        '20': '5rem',
+        '30': '7.5rem',
+        '40': '10rem',
+        '50': '12.5rem',
+        '1/2': '50%',
+        '1/8': '12.5%',
+        '3/8': '37.5%',
+      },
+      spacing: {
+        '10': '2.5rem',
       },
     },
   },

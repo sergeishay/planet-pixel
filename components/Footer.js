@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { fadeIn } from "../variants";
-import { EarthCanvas } from "../components/canvas/";
 import { slideIn } from "../variants";
-import { StarsCanvas } from "../components/canvas/";
+import Image from "next/image";
 
 const Footer = () => {
   const formRef = useRef();
@@ -15,6 +14,7 @@ const Footer = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { target } = e;
     const { name, value } = target;
@@ -24,67 +24,42 @@ const Footer = () => {
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    emailjs;
-    // .send(
-    //   import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-    //   import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-    //   {
-    //     from_name: form.name,
-    //     to_name: "Sergei | Shay",
-    //     from_email: form.email,
-    //     phone:form.email,
-    //     to_email: "sergeishay@gmail.com",
-    //     message: form.message,
-    //   },
-    //   import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-    // )
-    // .then(
-    //   () => {
-    //     setLoading(false);
-    //     alert("Thank you. I will get back to you as soon as possible.");
-
-    //     setForm({
-    //       name: "",
-    //       email: "",
-    //       phone:"",
-    //       message: "",
-    //     });
-    //   },
-    //   (error) => {
-    //     setLoading(false);
-    //     console.error(error);
-
-    //     alert("Ahh, something went wrong. Please try again.");
-    //   }
-    // );
+    // emailjs.send(...) - Uncomment and configure as needed
   };
 
+  const { scrollYProgress } = useScroll();
+  const x = useTransform(scrollYProgress, [0, 1.5], ["100%", "-80%"]);
+  const y = useTransform(scrollYProgress, [0, 1.5], ["-100%", "120%"]);
+
+
   return (
-    <div className="mx-0 h-screen w-full flex flex-col-reverse  xl:flex-row mt-[70px] mb-[150px] xl:mb-5 xl:mt-[10vh] xl:justify-center xl:items-center p-0 3xl:mt-[4vh] xl:mx-12">
+    <div className="relative mx-0  w-full flex flex-col
+     mt-[70px] mb-[0px] xl:mb-5 xl:mt-3 xl:justify-center xl:items-center p-0 3xl:mt-[4vh] ">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="text-center xl:w-[40%] z-10 flex pl-0 xl:pl-[7vw]  
-            flex-col align-center gap-2 m-0 justify-start xl:justify-center mx-4 mt-0 pt-0 xl:pt-30
-              xl:text-left  h-[60%] xl:h-full "
+        className="text-center z-10 flex pl-0 flex-col align-center
+         gap-2 m-0 justify-start xl:justify-center mx-4 mt-0 pt-0 xl:pt-30 h-[60%] xl:h-full"
       >
         <motion.h1
           variants={fadeIn("down", 0.4)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className=" text-[30px] xl:text-[3.2vw] leading-none z-10 pt-0 mt-0  font-medium"
+          className="text-[30px] xl:text-[3.2vw] leading-none z-10 pt-0 mt-0 xl:mt-[150px] font-medium"
         >
-          Lets<span className="text-myblue "> Connect.</span> <br />
+          Lets<span className="text-myblue"> Connect.</span> <br />
         </motion.h1>
         <motion.p
           variants={fadeIn("down", 0.3)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0  xl:my-0"
+          className="max-w-xl xl:max-w-2xl text-[18px] xl:text-[1.2vw] 
+          leading-tight mx-auto text-white xl:mx-0 xl:my-4"
         >
           Your story is unique your digital presence should be too. If youre
           ready to propel your vision beyond the stratosphere, our crew at
@@ -96,7 +71,7 @@ const Footer = () => {
           onSubmit={handleSubmit}
           className="mt-1 xl:mt-4 flex flex-col gap-3"
         >
-          <div className="flex flex-row justify-between w-full m-0 p-0 gap-3">
+          <div className="flex flex-row justify-between w-full mb-4 p-0 gap-3">
             <label className="flex w-full">
               <input
                 type="text"
@@ -104,8 +79,7 @@ const Footer = () => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="*Full Name"
-                className="py-1 px-6 w-full text-[14px] placeholder:text-white
-                 text-white rounded-[5px] gradient-border outline-none font-normal"
+                className="py-3 px-6 w-full text-[14px] placeholder:text-white text-white rounded-[5px] gradient-border outline-none font-normal"
               />
             </label>
             <label className="flex w-full ">
@@ -115,21 +89,21 @@ const Footer = () => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="*Email"
-                className="py-1 px-6 w-full text-[14px] placeholder:text-white text-white
-                 rounded-[5px] bg-white/20 border-2 gradient-border outline-none font-normal"
+                className="py-3 px-6 w-full text-[14px] placeholder:text-white text-white rounded-[5px] bg-white/20 border-2 gradient-border outline-none font-normal"
+              />
+            </label>
+            <label className="flex w-full">
+              <input
+                type="tel"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="*Phone"
+                className="py-3 px-6 w-full text-[14px] placeholder:text-white text-white rounded-[5px] bg-white/20 border-2 gradient-border outline-none font-normal gradient-border-focus"
               />
             </label>
           </div>
-          <label className="flex flex-col">
-            <input
-              type="tel"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="*Phone"
-              className="py-1 px-6 w-full text-[14px] placeholder:text-white text-white rounded-[5px] bg-white/20 border-2 gradient-border outline-none font-normal gradient-border-focus"
-            />
-          </label>
+
           <label className="flex flex-col">
             <textarea
               rows={7}
@@ -143,19 +117,18 @@ const Footer = () => {
 
           <button
             type="submit"
-            className="py-2 px-8 rounded-xl focus:rounded-xl outline-none w-fit text-white font-bold button-default button-hover"
+            className="py-2 px-8 mt-5 self-end outline-none w-fit text-white font-bold button-default button-hover"
           >
-            <span>{loading ? "Sending..." : "Send"}</span>
+            <span>{loading ? "Sending..." : "Let's Talk"}</span>
           </button>
         </form>
       </motion.div>
       <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className=" xl:w-[60%] h-[70%] xl:h-full flex flex-col z-10  xl:items-start xl:justify-start"
+        // style={{ x, y }}
+        className=" absolute mix-blend-luminosity  w-full bottom-[25vh] right-[100%] xl:bottom-[35vh] xl:left-[-30vw]"
       >
-        <EarthCanvas />
+        <Image className="rotate" src="/new-glob.png" fill alt="glob" />
       </motion.div>
-      {/* <StarsCanvas /> */}
     </div>
   );
 };

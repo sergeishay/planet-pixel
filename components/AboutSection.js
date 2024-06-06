@@ -25,7 +25,7 @@ const AboutSection = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className=" text-[18px] xl:text-[1.4vw]  leading-tight mx-0 text-white xl:mx-[10vw] mb-5"
+            className=" text-[18px] xl:text-[1.2vw]  leading-tight mx-0 text-white xl:mx-[10vw] mb-5"
           >
             Dive into our universe of services, where every option is a starlit path to success. Whether it&apos;s web development that defies gravity, social media banners that shine like supernovas, SEO that rockets your visibility, or marketing campaigns that traverse digital galaxies, we&apos;re here to make your online presence as dazzling as a comet&apos;s tail. Let&apos;s craft a digital cosmos that&apos;s uniquely yours.
           </motion.p>

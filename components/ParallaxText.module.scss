@@ -1,0 +1,57 @@
+// styles/ParallaxText.module.scss
+.parallax {
+    overflow: hidden;
+    white-space: nowrap;
+    height: 100%;
+  }
+  
+  .scroller {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+  }
+  
+  .scroller span {
+    margin: 0;
+    background: linear-gradient(to right, #7D13FF 0%, #2C52D1 20%, #15BFFD 40%, #7D13FF 60%, #2C52D1 79%, #15BFFD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-size: 140px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+  
+  .scroller span img {
+    margin-left: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .scroller span {
+      font-size: 70px;
+    }
+  
+    .md\\:hidden {
+      display: flex;
+    }
+  
+    .scroller {
+      flex-direction: column;
+    }
+  
+    .scroller span {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .md\\:hidden {
+      display: none;
+    }
+  }
+  

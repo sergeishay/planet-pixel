@@ -67,7 +67,7 @@
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
   z-index: 1;
-  border-radius: 5px !important ; /* Ensures border-radius is applied by default */
+  border-radius: 30px !important ; /* Ensures border-radius is applied by default */
 }
 
 .gradient-border:focus {
@@ -93,7 +93,7 @@
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  border-radius: 5px !important;
+  border-radius: 60px !important;
 
 }
 
@@ -101,7 +101,7 @@
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid white;
   transition: border 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  border-radius: 5px !important;
+  border-radius: 60px !important;
 
 }
 
@@ -109,7 +109,7 @@
   border-image-source: linear-gradient(to right, #7d13ff 0%, #15bffd 100%);
   border-image-slice: 1;
   color: transparent;
-  border-radius: 5px !important;
+  border-radius: 0px !important;
 
 }
 
@@ -121,7 +121,7 @@
   transform: translateX(-10px);
   opacity: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  border-radius: 5px !important;
+  border-radius: 0px !important;
 
 }
 
@@ -129,7 +129,7 @@
   display: inline-block;
   opacity: 1;
   transition: opacity 0.3s ease;
-  border-radius: 5px !important;
+  border-radius: 0px !important;
 
 }
 
@@ -145,7 +145,49 @@
   transform: translateX(-30px);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  border-radius: 5px !important;
+  border-radius: 0px !important;
 }
 
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: spin 30s linear infinite;
+  width: 1200px !important;
+  height: 1200px !important;
+  max-width: 1200px !important;
+}
+.rotate2 {
+  animation: rotate2 60s infinite linear;
+  width: 800px;
+  height: 800px;
+  max-width: 800px;
+  max-height: 800px;
+  min-width: 800px;
+  min-height: 800px;
+}
+@keyframes rotate2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .hover-card-content {
+    position: fixed !important;
+    bottom: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+  }
+}
