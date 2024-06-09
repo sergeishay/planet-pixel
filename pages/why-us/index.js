@@ -48,7 +48,7 @@ const WhyUs = () => {
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.div variants={iconVariants} animate="float">
-                <Image src="/alien.svg" alt="Alien" width={60} height={60} />
+                <Image src="/alien.svg" alt="Alien" className="icons"  width={60} height={60} />
               </motion.div>
             </HoverCardTrigger>
             <HoverCardContent

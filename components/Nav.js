@@ -6,6 +6,7 @@ import {
   HiRectangleGroup,
   HiChatBubbleBottomCenterText,
   HiEnvelope,
+  HiMiniCheckBadge 
 } from "react-icons/hi2";
 import { CiHome } from "react-icons/ci";
 import Link from "next/link";
@@ -18,9 +19,9 @@ export const navData = [
   { name: "services", path: "/services", icon: <HiRectangleGroup /> },
   { name: "work", path: "/work", icon: <HiViewColumns /> },
   {
-    name: "testimonials",
-    path: "/testimonials",
-    icon: <HiChatBubbleBottomCenterText />,
+    name: "why-us",
+    path: "/why-us",
+    icon: <HiMiniCheckBadge />,
   },
   {
     name: "contact",
