@@ -1,10 +1,13 @@
 "use client";
+import styles from "./styles.module.scss";
 import React, { useEffect, useState } from "react";
 import { getProjectBySlug } from "../../../dataConnector";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../variants";
 import ProjectsBtn from "../../../components/ProjectsBtn";
+import Rounded from "../../../components/common/RoundedButton";
+import Link from "next/link";
 import Image from "next/image";
 const WorkDetails = () => {
   const pathname = usePathname();
@@ -57,37 +60,196 @@ const WorkDetails = () => {
   }, [slug]);
 
   if (!project) {
-    return <div className="pt-5 h-full">Loading...</div>; // Or any other loading state representation
+    return <div className="pt-5 h-[100vh]">Loading...</div>; // Or any other loading state representation
   }
 
   return (
-    <div className="flex flex-row justify-center items-center w-full pt-5 h-full">
-      <div className="flex items-start justify-center w-full h-[100vh]">
-        <div className="text-center z-10 flex  flex-col
+    <div className="flex flex-col justify-center items-center w-full pt-5 h-full px-[7vw]">
+      <div className="flex flex-col items-start justify-center w-full h-[90vh]">
+        <div
+          className="text-center z-10 flex  flex-col
          align-center gap-4 m-0 justify-end xl:justify-center xl:pt-30
-           xl:pl-3 xl:text-left h-full container mx-2 xl:mx-1">
-             <motion.h1
+            xl:text-left h-full"
+        >
+          <motion.h1
             variants={fadeIn("down", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
             className=" text-[30px] xl:text-[3.8vw] leading-tight z-5 font-medium"
           >
-            <span className="text-white font-montserrat">{project.title.toUpperCase()}</span>
-
+            <span className="text-white font-montserrat">
+              {project.title.toUpperCase()}
+            </span>
           </motion.h1>
           <motion.p
             variants={fadeIn("down", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-2xl text-[18px] xl:text-[1.4vw] leading-tight mx-auto text-white xl:mx-0 mb-5 xl:my-7"
+            className="max-w-sm xl:max-w-2xl text-[18px]
+             xl:text-[1.4vw] leading-tight mx-auto text-white "
           >
             {project.description}
           </motion.p>
         </div>
+        <div className="flex flex-row gap-6 w-full">
+          <div className="flex flex-col gap-0">
+            <h1 className="leading-0">ROLE/SERVICES</h1>
+            <div className="divider"></div>
+            <h1 className="leading-0">{project.services}</h1>
+          </div>
+          <div className="flex flex-col gap-0">
+            <h1 className="leading-0">LOCATION & YEAR</h1>
+            <div className="divider"></div>
+            <div className="flex flex-row gap-2">
+              <h1 className="leading-0">{project.location}</h1> |
+              <h1 className="leading-0">{project.year}</h1>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div className="first-image-par w-full flex flex-col  ">
+        {/* <Link href={project.link} className="text-white hover:text-white">
+          <Rounded className={styles.button}>
+            <p>Live Website</p>
+          </Rounded>
+        </Link> */}
+        {project.image1 && (
+          <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
+            <div className="relative w-1/4 h-[258px]">
+              <Image
+                src={project.image1}
+                fill
+                alt="first image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/2 h-[258px]">
+              <Image
+                src={project.image2}
+                fill
+                alt="second image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/4 h-[258px]">
+              <Image
+                src={project.image3}
+                fill
+                alt="third image"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="second-image-par w-full flex flex-col pt-[20px]">
+        {project.image4 && (
+          <div className="three-images flex flex-row w-full gap-5">
+            <div className="relative w-1/2 h-[441px]">
+              <Image
+                src={project.image4}
+                fill
+                alt="first image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/2 h-[441px]">
+              <Image
+                src={project.image5}
+                fill
+                alt="second image"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        )}
+        {project.image6 && (
+          <div className="relative w-full h-[90vh] mt-[20px]">
+            <Image
+              src={project.image6}
+              fill
+              alt="third image"
+              className="object-cover"
+            />
+          </div>
+        )}
+        {project.image7 && (
+          <div className="relative w-full h-[100vh] mt-[20px] bg-white">
+            <Image
+              src={project.image7}
+              fill
+              alt="third image"
+              className="object-contain"
+            />
+          </div>
+        )}
+      </div>
+      {project.video1 && (
+        <div className="video-par w-full flex flex-col my-[50px]">
+          <div className="relative w-full ">
+            {/* Mockup Image */}
+            <Image
+              src="/compMock.png"
+              alt="Computer Mockup"
+              width={1440}
+              height={900}
+              className="w-full h-auto"
+            />
+
+            {/* Video */}
+            <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%] ">
+              <video
+                src={project.video1}
+                autoPlay
+                loop
+                muted
+                className="w-full h-full object-cover rounded-[20px]"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="third-image-par w-full flex flex-col pt-[20px]">
+        {project.image8 && (
+          <div className="four-images flex flex-row w-full gap-5 mb-[100px]">
+            <div className="relative w-1/4 h-[60vh]">
+              <Image
+                src={project.image8}
+                fill
+                alt="first image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/4 h-[60vh]">
+              <Image
+                src={project.image9}
+                fill
+                alt="second image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/4 h-[60vh]">
+              <Image
+                src={project.image10}
+                fill
+                alt="third image"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative w-1/4 h-[60vh]">
+              <Image
+                src={project.image11}
+                fill
+                alt="third image"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

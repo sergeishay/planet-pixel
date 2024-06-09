@@ -190,7 +190,12 @@
 }
 
 
-
+.divider {
+  width: 378px;
+  height: 3px;
+  background: linear-gradient(to right, #7D13FF, #2C52D1, #15BFFD);
+  margin: 20px 0; /* Adjust the margin as needed */
+}
 
 
 
