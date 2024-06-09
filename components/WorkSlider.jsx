@@ -67,7 +67,7 @@ const WorkSlider = ({ projects }) => {
             </div>
             <div className={`${styles.overlay} opacity-0 hover:opacity-100 transition-opacity duration-300`}>
               <span className="text-[#00C2FF] text-lg">Live Project</span>
-              <Link href={project.link}>
+              <Link href={`/work/${project.title}`}>
                 <BsArrowRight className="text-white text-2xl mt-2" />
               </Link>
             </div>

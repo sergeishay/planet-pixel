@@ -40,7 +40,7 @@ const Work = () => {
           >
             Our <span className="text-myblue">Projects</span>
           </motion.h1>
-          <p className="text-white mt-4">
+          <p className="text-white text-[1.4vw] mt-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since book.
           </p>
         </div>

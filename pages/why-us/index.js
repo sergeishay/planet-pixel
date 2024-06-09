@@ -67,7 +67,7 @@ const WhyUs = () => {
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.div variants={iconVariants} animate="float">
-                <Image src="/planet.svg" alt="Planet" width={60} height={60} />
+                <Image src="/planet.svg" alt="Planet" className="icons"  width={60} height={60} />
               </motion.div>
             </HoverCardTrigger>
             <HoverCardContent
@@ -86,7 +86,7 @@ const WhyUs = () => {
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.div variants={iconVariants} animate="float">
-                <Image src="/moon.svg" alt="Moon" width={60} height={60} />
+                <Image src="/moon.svg" alt="Moon" className="icons"  width={60} height={60} />
               </motion.div>
             </HoverCardTrigger>
             <HoverCardContent
@@ -105,7 +105,7 @@ const WhyUs = () => {
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.div variants={iconVariants} animate="float">
-                <Image src="/rocket.svg" alt="Rocket" width={60} height={60} />
+                <Image src="/rocket.svg" alt="Rocket" className="icons"  width={60} height={60} />
               </motion.div>
             </HoverCardTrigger>
             <HoverCardContent
@@ -124,7 +124,7 @@ const WhyUs = () => {
           <HoverCard>
             <HoverCardTrigger asChild>
               <motion.div variants={iconVariants} animate="float">
-                <Image src="/stars.svg" alt="Stars" width={60} height={60} />
+                <Image src="/stars.svg" alt="Stars" className="icons"  width={60} height={60} />
               </motion.div>
             </HoverCardTrigger>
             <HoverCardContent
