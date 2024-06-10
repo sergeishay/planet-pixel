@@ -1,13 +1,14 @@
 import styles from "./styles.module.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { getProjectBySlug, getProjects } from "../../../dataConnector";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { fadeIn, parallaxVariant1, parallaxVariant3 } from "../../../variants";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { fadeIn, slideIn } from "../../../variants";
 import ProjectsBtn from "../../../components/ProjectsBtn";
 import Rounded from "../../../components/common/RoundedButton";
 import Link from "next/link";
 import Image from "next/image";
+import Rellax from "rellax";
 
 const WorkDetails = () => {
   const pathname = usePathname();
@@ -85,12 +86,22 @@ const WorkDetails = () => {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
-  
   const { scrollY } = useScroll();
   const y6 = useTransform(scrollY, [0, 1000], [200, -200]);
 
-
-
+  const imageRef = useRef(null);
+  function handleImageLoad(ref) {
+    if (ref.current) {
+      new Rellax(ref.current, {
+        horizontal: true,
+        center: true,
+        speed: 2,
+        callback: function (position) {
+          console.log(position);
+        },
+      });
+    }
+  }
 
   if (!project) {
     return <div className="pt-5 h-[100vh]">Loading...</div>; // Or any other loading state representation
@@ -116,7 +127,7 @@ const WorkDetails = () => {
             </span>
           </motion.h1>
           <motion.p
-            variants={fadeIn("down", 0.3)}
+            variants={fadeIn("down", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
@@ -148,9 +159,10 @@ const WorkDetails = () => {
           <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
             <motion.div
               className="relative w-1/4 h-[258px]"
-              initial="initial"
-              animate="scroll"
-              style={{ y: y1 }}
+              variants={slideIn("down", "spring", 0.4, 0.1)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
             >
               <Image
                 src={project.image1}
@@ -189,6 +201,7 @@ const WorkDetails = () => {
           <div className="three-images flex flex-row w-full gap-5">
             <div className="relative w-1/2 h-[441px]">
               <Image
+                ref={imageRef}
                 src={project.image4}
                 fill
                 alt="first image"
@@ -205,22 +218,21 @@ const WorkDetails = () => {
             </div>
           </div>
         )}
-        
+
         {project.image6 && (
-    <div className="relative w-full h-[90vh] mt-[20px] overflow-hidden">
-      <motion.div
-        className="absolute top-0 left-0 w-full h-full"
-        style={{ y: y6 }}
-      >
-        <Image
-          src={project.image6}
-          fill
-          alt="background image"
-          style={{ objectFit: "cover" }}
-        />
-      </motion.div>
-    </div>
-  )}
+          <div className="relative w-full h-[90vh] mt-[20px] overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full">
+              <Image
+                ref={imageRef}
+                src={project.image6}
+                fill
+                alt="background image"
+                className="eye object-cover"
+                onLoadingComplete={() => handleImageLoad(imageRef)}
+              />
+            </div>
+          </div>
+        )}
 
         {project.image7 && (
           <div className="relative w-full h-[100vh] mt-[20px] bg-white">
