@@ -1,11 +1,11 @@
 export const fadeIn = (direction, delay) => {
   return {
     hidden: {
-      y: direction === 'up' ? 80 : direction === 'down' ? -80 : 0,
+      y: direction === "up" ? 80 : direction === "down" ? -80 : 0,
       opacity: 0,
-      x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0,
+      x: direction === "left" ? 80 : direction === "right" ? -80 : 0,
       transition: {
-        type: 'tween',
+        type: "tween",
         duration: 1.5,
         delay: delay,
         ease: [0.25, 0.6, 0.3, 0.8],
@@ -16,7 +16,7 @@ export const fadeIn = (direction, delay) => {
       x: 0,
       opacity: 1,
       transition: {
-        type: 'tween',
+        type: "tween",
         duration: 1.4,
         delay: delay,
         ease: [0.25, 0.25, 0.25, 0.75],
@@ -24,7 +24,6 @@ export const fadeIn = (direction, delay) => {
     },
   };
 };
-
 
 export const textVariant = (delay) => {
   return {
@@ -43,7 +42,6 @@ export const textVariant = (delay) => {
     },
   };
 };
-
 
 export const zoomIn = (delay, duration) => {
   return {
@@ -93,4 +91,14 @@ export const staggerContainer = (staggerChildren, delayChildren) => {
       },
     },
   };
+};
+
+export const parallaxVariant1 = {
+  hidden: { y: 0 },
+  visible: { y: 100, transition: { type: "spring", stiffness: 50, damping: 20 } }
+};
+
+export const parallaxVariant3 = {
+  hidden: { y: 0 },
+  visible: { y: -100, transition: { type: "spring", stiffness: 50, damping: 20 } }
 };

@@ -1,26 +1,25 @@
-"use client";
 import styles from "./styles.module.scss";
 import React, { useEffect, useState } from "react";
-import { getProjectBySlug } from "../../../dataConnector";
+import { getProjectBySlug, getProjects } from "../../../dataConnector";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { fadeIn } from "../../../variants";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { fadeIn, parallaxVariant1, parallaxVariant3 } from "../../../variants";
 import ProjectsBtn from "../../../components/ProjectsBtn";
 import Rounded from "../../../components/common/RoundedButton";
 import Link from "next/link";
 import Image from "next/image";
+
 const WorkDetails = () => {
   const pathname = usePathname();
   let slug = pathname?.split("/").pop().replace(/ /g, "-");
   const [project, setProject] = useState(null); // State to store the fetched project
+  const [nextProject, setNextProject] = useState(null); // State to store the next project
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
         const projectData = await getProjectBySlug(slug);
-        if (projectData?.id.length > 0) {
-          // Assuming the query returns an array, even if it's for a single project
-
+        if (projectData) {
           const formattedProject = {
             title: projectData.title,
             link: projectData.liveLink,
@@ -44,7 +43,6 @@ const WorkDetails = () => {
             image12: projectData.image12,
             video1: projectData.video1,
           };
-          console.log(formattedProject);
           setProject(formattedProject); // Update state with the formatted project
         } else {
           console.log("Project not found or no projects returned.");
@@ -54,17 +52,52 @@ const WorkDetails = () => {
       }
     };
 
+    const fetchNextProject = async () => {
+      try {
+        const { data } = await getProjects();
+        const formattedProjects = data.projects.edges.map(({ node }) => ({
+          title: node.title,
+          slug: node.title.replace(/ /g, "-"),
+          link: node.liveLink,
+          thumbnail: node.mainImage,
+          description: node.description,
+          gallery: node.gallery,
+          id: node.id,
+        }));
+
+        const currentIndex = formattedProjects.findIndex(
+          (project) => project.slug === slug
+        );
+        const nextIndex = (currentIndex + 1) % formattedProjects.length;
+        setNextProject(formattedProjects[nextIndex]);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+      }
+    };
+
     if (slug) {
       fetchProject(); // Only invoke the fetch function if a slug is provided
+      fetchNextProject(); // Fetch the next project
     }
   }, [slug]);
+
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+  
+  const { scrollY } = useScroll();
+  const y6 = useTransform(scrollY, [0, 1000], [200, -200]);
+
+
+
 
   if (!project) {
     return <div className="pt-5 h-[100vh]">Loading...</div>; // Or any other loading state representation
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-full pt-5 h-full px-[7vw]">
+    <div className="flex flex-col justify-center items-center w-full pt-5 h-full px-[7vw] font-montserrat">
       <div className="flex flex-col items-start justify-center w-full h-[90vh]">
         <div
           className="text-center z-10 flex  flex-col
@@ -110,22 +143,22 @@ const WorkDetails = () => {
         </div>
       </div>
 
-      <div className="first-image-par w-full flex flex-col  ">
-        {/* <Link href={project.link} className="text-white hover:text-white">
-          <Rounded className={styles.button}>
-            <p>Live Website</p>
-          </Rounded>
-        </Link> */}
+      <div className="first-image-par w-full flex flex-col">
         {project.image1 && (
           <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
-            <div className="relative w-1/4 h-[258px]">
+            <motion.div
+              className="relative w-1/4 h-[258px]"
+              initial="initial"
+              animate="scroll"
+              style={{ y: y1 }}
+            >
               <Image
                 src={project.image1}
                 fill
                 alt="first image"
                 className="object-cover"
               />
-            </div>
+            </motion.div>
             <div className="relative w-1/2 h-[258px]">
               <Image
                 src={project.image2}
@@ -134,17 +167,23 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/4 h-[258px]">
+            <motion.div
+              className="relative w-1/4 h-[258px]"
+              initial="initial"
+              animate="scroll"
+              style={{ y: y3 }}
+            >
               <Image
                 src={project.image3}
                 fill
                 alt="third image"
                 className="object-cover"
               />
-            </div>
+            </motion.div>
           </div>
         )}
       </div>
+
       <div className="second-image-par w-full flex flex-col pt-[20px]">
         {project.image4 && (
           <div className="three-images flex flex-row w-full gap-5">
@@ -166,16 +205,23 @@ const WorkDetails = () => {
             </div>
           </div>
         )}
+        
         {project.image6 && (
-          <div className="relative w-full h-[90vh] mt-[20px]">
-            <Image
-              src={project.image6}
-              fill
-              alt="third image"
-              className="object-cover"
-            />
-          </div>
-        )}
+    <div className="relative w-full h-[90vh] mt-[20px] overflow-hidden">
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full"
+        style={{ y: y6 }}
+      >
+        <Image
+          src={project.image6}
+          fill
+          alt="background image"
+          style={{ objectFit: "cover" }}
+        />
+      </motion.div>
+    </div>
+  )}
+
         {project.image7 && (
           <div className="relative w-full h-[100vh] mt-[20px] bg-white">
             <Image
@@ -187,6 +233,7 @@ const WorkDetails = () => {
           </div>
         )}
       </div>
+
       {project.video1 && (
         <div className="video-par w-full flex flex-col my-[50px]">
           <div className="relative w-full ">
@@ -200,7 +247,7 @@ const WorkDetails = () => {
             />
 
             {/* Video */}
-            <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%] ">
+            <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%]">
               <video
                 src={project.video1}
                 autoPlay
@@ -212,9 +259,10 @@ const WorkDetails = () => {
           </div>
         </div>
       )}
+
       <div className="third-image-par w-full flex flex-col pt-[20px]">
         {project.image8 && (
-          <div className="four-images flex flex-row w-full gap-5 mb-[100px]">
+          <div className="four-images flex flex-row w-full gap-5">
             <div className="relative w-1/4 h-[60vh]">
               <Image
                 src={project.image8}
@@ -249,7 +297,39 @@ const WorkDetails = () => {
             </div>
           </div>
         )}
+        {project.image12 && (
+          <div className="relative w-full h-[100vh] mt-[20px] bg-white">
+            <Image
+              src={project.image12}
+              fill
+              alt="third image"
+              className="object-contain"
+            />
+          </div>
+        )}
       </div>
+
+      {nextProject && (
+        <div className="next-case mt-[50px] w-full flex flex-col items-center justify-center my-[100px]">
+          <h2 className="text-white text-[24px] mb-[20px]">Next Case</h2>
+          <Link
+            href={`/work/${nextProject.slug}`}
+            className="w-full flex flex-col items-center justify-center border-b-2 border-lightBlue overflow-hidden group"
+          >
+            <h3 className="text-white text-[75px] group-hover:text-gray-500 transition duration-300">
+              {nextProject.title}
+            </h3>
+            <div className="relative w-[600px] h-[250px] mb-[-50px] transition-transform duration-700 group-hover:-translate-y-[50px]">
+              <Image
+                src={nextProject.thumbnail}
+                fill
+                alt={nextProject.title}
+                className="object-cover"
+              />
+            </div>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
