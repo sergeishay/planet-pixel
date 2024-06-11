@@ -59,7 +59,7 @@ const Footer = () => {
           animate="show"
           exit="hidden"
           className="max-w-xl xl:max-w-2xl text-[18px] xl:text-[1.2vw] 
-          leading-tight mx-auto text-white xl:mx-0 xl:my-4"
+          leading-tight mx-auto text-white xl:mx-0 my-4"
         >
           Your story is unique your digital presence should be too. If youre
           ready to propel your vision beyond the stratosphere, our crew at
@@ -69,9 +69,9 @@ const Footer = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-1 xl:mt-4 flex flex-col gap-3"
+          className="mt-1 xl:mt-4 flex flex-col gap-0 xl:gap-3"
         >
-          <div className="flex flex-row justify-between w-full mb-4 p-0 gap-3">
+          <div className="flex flex-col xl:flex-row justify-between w-full mb-4 p-0 gap-3">
             <label className="flex w-full">
               <input
                 type="text"
@@ -111,7 +111,9 @@ const Footer = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What you want to say?"
-              className="py-1 px-6 w-full text-[14px] placeholder:text-white text-white rounded-[5px] bg-white/20 border-2 gradient-border outline-none font-normal gradient-border-focus"
+              className="py-1 px-6 w-full text-[14px] placeholder:text-white
+               text-white rounded-[5px] bg-white/20 border-2 gradient-border
+                outline-none font-normal gradient-border-focus"
             />
           </label>
 

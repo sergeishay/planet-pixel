@@ -43,7 +43,7 @@ const Nav = () => {
       <div
         className="flex w-full xl:flex-col items-center justify-between 
       xl:justify-center gap-y-10 px-5 xl:px-6 mb-5  md:px-40  h-[80] xl:h-max py-3 xl:py-5 
-      text-2xl xl:text-2xl rounded-full bg-white/40 backdrop-blur-sm "
+      text-2xl xl:text-2xl rounded-full bg-white/40  backdrop-blur-sm backdrop-invert-[.25]"
       >
         {navData.map((link, index) => {
           return (

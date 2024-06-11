@@ -30,3 +30,10 @@
     border-radius: 50%;
     top: 100%;
 }
+
+@media screen and (max-width: 768px){
+    .roundedButton{
+        padding: 10px 40px 10px 40px;
+    }
+    
+}

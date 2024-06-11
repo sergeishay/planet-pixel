@@ -167,21 +167,16 @@ const Home = () => {
             ARE YOU BElTED? BECAUSE WE׳RE ON OUR WAY.
           </motion.p>
           <div className="flex flex-row align-center gap-3 justify-center xl:justify-start ">
-            <Rounded
-            backgroundButtonColor="lightBlue"
-            >
-              <Link href="/contact" className="text-white hover:text-white">
+            <Link href="/contact" className="text-white hover:text-white">
+              <Rounded backgroundButtonColor="lightBlue">
                 <p>Let`s Talk</p>
-              </Link>
-            </Rounded>
-            <Rounded
-            backgroundButtonColor="lightBlue"
-            >
-              <Link href="/work" className="text-white hover:text-white">
+              </Rounded>
+            </Link>
+            <Link href="/work" className="text-white hover:text-white">
+              <Rounded backgroundButtonColor="lightBlue">
                 <p>Our Projects</p>
-              </Link>
-            </Rounded>
-
+              </Rounded>
+            </Link>
           </div>
         </div>
         <motion.div className="flex absolute justify-center  w-full h-full ">

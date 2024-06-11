@@ -69,6 +69,12 @@ module.exports = {
       spacing: {
         '10': '2.5rem',
       },
+      backdropInvert: {
+        25: '.25',
+        50: '.5',
+        75: '.75',
+
+      }
     },
   },
   container: {

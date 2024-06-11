@@ -248,7 +248,7 @@ const WorkDetails = () => {
 
       {project.video1 && (
         <div className="video-par w-full flex flex-col my-[50px]">
-          <div className="relative w-full ">
+          <div className="relative w-full">
             {/* Mockup Image */}
             <Image
               src="/compMock.png"
@@ -265,6 +265,7 @@ const WorkDetails = () => {
                 autoPlay
                 loop
                 muted
+                playsInline
                 className="w-full h-full object-cover rounded-[20px]"
               />
             </div>

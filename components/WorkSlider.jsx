@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./work.module.scss"; // Import the styles
+import styles from "./work.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -25,16 +25,15 @@ const WorkSlider = ({ projects }) => {
     beforeChange: (oldIndex, newIndex) => setCurrentIndex(newIndex),
     appendDots: dots => (
       <div
-
         style={{
           backgroundColor: "transparent",
           borderRadius: "10px",
           padding: "10px",
-          marginBottom:"20px",
-          marginTop:"20px",
+          marginBottom: "20px",
+          marginTop: "20px",
         }}
       >
-        <ul style={{ marginBottom: "-10px", display: "flex", justifyContent: "center", zIndex:"20" }}> {dots} </ul>
+        <ul style={{ marginBottom: "-10px", display: "flex", justifyContent: "center", zIndex: "20" }}> {dots} </ul>
       </div>
     ),
     customPaging: i => (

@@ -26,7 +26,7 @@ const Work = () => {
     }
     fetchProjects();
   }, []);
-
+  console.log(projects);
   return (
     <div className="h-[100vh] flex-1 flexflex-col mx-[15px] items-center pt-[5vh]">
       <div className="flex flex-col xl:flex-row  justify-center items-center h-full">
@@ -40,14 +40,14 @@ const Work = () => {
           >
             Our <span className="text-myblue">Projects</span>
           </motion.h1>
-          <p className="text-white text-[1.4vw] mt-4">
+          <p className="text-white text-[16px] xl:text-[1.4vw] mt-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since book.
           </p>
         </div>
         <div className="w-full xl:w-[50%] flex justify-center xl:mx-[8vw]">
           {
             projects.length > 0 ? (
-              <WorkSlider projects={projects} />
+              <WorkSlider key={projects[0].id} projects={projects} />
             ) : (
               <p className="text-white">Loading...</p>
             )

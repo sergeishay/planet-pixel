@@ -144,7 +144,7 @@ export default function Projects() {
         animate="show"
         exit="hidden"
         className="text-[30px] xl:text-[3.8vw] leading-tight
-         z-5 font-medium mt-[120px] mb-[50px]"
+         z-5 font-medium mt-[120px] xl:mb-[50px]"
       >
         Recent <span className="text-lightBlue">Works</span>
       </motion.h1>
@@ -160,11 +160,11 @@ export default function Projects() {
           />
         ))}
       </div>
-      <Rounded backgroundButtonColor="lightBlue">
-        <Link href="/work" className="text-white hover:text-white">
+      <Link href="/work" className="text-white hover:text-white">
+        <Rounded backgroundButtonColor="lightBlue">
           <p>More Work</p>
-        </Link>
-      </Rounded>
+        </Rounded>
+      </Link>
       {!isMobile && (
         <>
           <motion.div
