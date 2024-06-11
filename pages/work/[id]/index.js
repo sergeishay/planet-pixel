@@ -261,6 +261,7 @@ const WorkDetails = () => {
             {/* Video */}
             <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%]">
               <video
+                ref={videoRef}
                 src={project.video1}
                 autoPlay
                 loop
@@ -268,6 +269,13 @@ const WorkDetails = () => {
                 playsInline
                 className="w-full h-full object-cover rounded-[20px]"
               />
+              <button
+                onClick={() => videoRef.current.play()}
+                className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl"
+                style={{ display: isVideoPlaying ? "none" : "flex" }}
+              >
+                Play
+              </button>
             </div>
           </div>
         </div>

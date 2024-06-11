@@ -7,12 +7,6 @@
   padding-bottom: 15px;
 }
 
-.slick-slide {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-}
-
 .projectCard {
   width: 250px;
   height: 34vh;
@@ -69,47 +63,6 @@
   margin-top: 10px;
 }
 
-/* Slick Dots Styles */
-.slick-dots {
-  bottom: 20px; /* Adjust as needed */
-  li {
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    button {
-      width: 10px;
-      height: 10px;
-      padding: 0;
-      &:before {
-        font-size: 0; /* Hide the default dot content */
-        color: transparent;
-      }
-    }
-    &.slick-active div {
-      background-color: #717171 !important;
-    }
-  }
-}
-
-/* Specific styles for the custom dots */
-.slick-dots li button:before {
-  font-size: 10px;
-  color: transparent;
-}
-
-.slick-dots li.slick-active button:before {
-  color: transparent;
-}
-
-.slick-dots li button {
-  width: 10px;
-  height: 10px;
-  padding: 0;
-}
-
-.slick-dots li.slick-active div {
-  background-color: #717171 !important;
-}
 
 @media screen and (max-width: 768px) {
   .projectCard {
