@@ -15,7 +15,7 @@ const WorkDetails = () => {
   let slug = pathname?.split("/").pop().replace(/ /g, "-");
   const [project, setProject] = useState(null); // State to store the fetched project
   const [nextProject, setNextProject] = useState(null); // State to store the next project
-
+  const [videoPlaying ,isVideoPlaying] = useState(true); // State to store
   useEffect(() => {
     const fetchProject = async () => {
       try {
@@ -88,7 +88,7 @@ const WorkDetails = () => {
 
   const { scrollY } = useScroll();
   const y6 = useTransform(scrollY, [0, 1000], [200, -200]);
-
+  const videoRef = useRef(null);
   const imageRef = useRef(null);
   function handleImageLoad(ref) {
     if (ref.current) {
