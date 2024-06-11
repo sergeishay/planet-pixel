@@ -4,8 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./work.module.scss";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 const WorkSlider = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

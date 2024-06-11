@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./rounded.module.scss";
 import React, { useEffect, useState, useRef } from "react";
 import { getProjectBySlug, getProjects } from "../../../dataConnector";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ const WorkDetails = () => {
   let slug = pathname?.split("/").pop().replace(/ /g, "-");
   const [project, setProject] = useState(null); // State to store the fetched project
   const [nextProject, setNextProject] = useState(null); // State to store the next project
-  const [videoPlaying ,isVideoPlaying] = useState(true); // State to store
+  const [videoPlaying ,isVideoPlaying] = useState(null); // State to store
   useEffect(() => {
     const fetchProject = async () => {
       try {
