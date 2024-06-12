@@ -160,7 +160,7 @@ const WorkDetails = () => {
         {project.image1 && (
           <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
             <motion.div
-              className="relative w-1/4 h-[110px] xl:h-[258px]"
+              className="relative w-1/4 h-[90px] xl:h-[258px]"
               variants={fadeIn("down", 0.4)}
               initial="hidden"
               whileInView="show"
@@ -174,7 +174,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </motion.div>
-            <div className="relative w-1/2 h-[110px] xl:h-[258px]">
+            <div className="relative w-1/2 h-[90px] xl:h-[258px]">
               <Image
                 src={project.image2}
                 fill
@@ -183,7 +183,7 @@ const WorkDetails = () => {
               />
             </div>
             <motion.div
-              className="relative w-1/4 h-[110px] xl:h-[258px]"
+              className="relative w-1/4 h-[90px] xl:h-[258px]"
               variants={fadeIn("up", 0.1)}
               initial="hidden"
               whileInView="show"
@@ -203,7 +203,7 @@ const WorkDetails = () => {
       <div className="second-image-par w-full flex flex-col pt-[20px]">
         {project.image4 && (
           <div className="three-images flex flex-row w-full gap-5">
-            <div className="relative w-1/2 h-[210px]  xl:h-[441px]">
+            <div className="relative w-1/2 h-[160px]  xl:h-[441px]">
               <Image
                 ref={imageRef}
                 src={project.image4}
@@ -212,7 +212,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/2 h-[210px]  xl:h-[441px]">
+            <div className="relative w-1/2 h-[160px]  xl:h-[441px]">
               <Image
                 src={project.image5}
                 fill
@@ -224,7 +224,7 @@ const WorkDetails = () => {
         )}
 
         {project.image6 && (
-          <div className="relative w-full h-[250px] xl:h-[90vh] mt-[20px] overflow-hidden">
+          <div className="relative w-full h-[220px] xl:h-[90vh] mt-[20px] overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full">
               <Image
                 ref={imageRef}
@@ -267,11 +267,12 @@ const WorkDetails = () => {
               <video
                 ref={videoRef}
                 src={project.video1}
-                autoplay
-                loop
+                autoPlay="autoplay"
+                loop = {true}
                 muted
-                playsInline
+                playsInLine="playsinline"
                 className="w-full h-full object-cover rounded-[20px]"
+                type="video/mp4"
               />
               <button
                 onClick={() => videoRef.current.play()}
@@ -287,8 +288,8 @@ const WorkDetails = () => {
 
       <div className="third-image-par w-full flex flex-col pt-[20px]">
         {project.image8 && (
-          <div className="four-images flex flex-row w-full gap-5">
-            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
+          <div className="four-images flex flex-row w-full gap-2 xl:gap-5">
+            <div className="relative w-1/2 xl:w-1/4 h-[120px] xl:h-[60vh]">
               <Image
                 src={project.image8}
                 fill
@@ -296,7 +297,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[120px] xl:h-[60vh]">
               <Image
                 src={project.image9}
                 fill
@@ -304,7 +305,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[120px] xl:h-[60vh]">
               <Image
                 src={project.image10}
                 fill
@@ -312,7 +313,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[120px] xl:h-[60vh]">
               <Image
                 src={project.image11}
                 fill
