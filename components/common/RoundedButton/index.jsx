@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useRef } from 'react';
-import styles from './style.module.scss';
+import styles from './button.module.scss';
 import gsap from 'gsap';
 import Magnetic from '../Magnetic';
 
