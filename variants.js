@@ -95,10 +95,10 @@ export const staggerContainer = (staggerChildren, delayChildren) => {
 
 export const parallaxVariant1 = {
   hidden: { y: 0 },
-  visible: { y: 100, transition: { type: "spring", stiffness: 50, damping: 20 } }
+  show: { y: 100, transition: { type: "spring", stiffness: 50, damping: 20 } }
 };
 
 export const parallaxVariant3 = {
   hidden: { y: 0 },
-  visible: { y: -100, transition: { type: "spring", stiffness: 50, damping: 20 } }
+  show: { y: -100, transition: { type: "spring", stiffness: 50, damping: 20 } }
 };

@@ -149,7 +149,8 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-3xl text-[18px] xl:text-[1.2vw] leading-tight mx-auto text-white xl:mx-0 mb-2 xl:mt-3"
+            className="max-w-lg xl:max-w-3xl text-[18px] xl:text-[1.2vw]
+             leading-tight mx-auto text-white xl:mx-0 mb-2 xl:mt-3"
           >
             Welcome aboard Planet-Pixel, your launchpad to the digital stars!
             Here, we don&apos;t just build websites, we launch your epic story
@@ -169,12 +170,12 @@ const Home = () => {
           <div className="flex flex-row align-center gap-3 justify-center xl:justify-start ">
             <Link href="/contact" className="text-white hover:text-white">
               <Rounded backgroundButtonColor="lightBlue">
-                <p>Let`s Talk</p>
+                <p className="text-white hover:text-white">Let`s Talk</p>
               </Rounded>
             </Link>
             <Link href="/work" className="text-white hover:text-white">
               <Rounded backgroundButtonColor="lightBlue">
-                <p>Our Projects</p>
+                <p className="text-white hover:text-white" >Our Projects</p>
               </Rounded>
             </Link>
           </div>

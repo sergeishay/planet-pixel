@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { getProjectBySlug, getProjects } from "../../../dataConnector";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { fadeIn, slideIn } from "../../../variants";
+import { fadeIn, slideIn, parallaxVariant1 } from "../../../variants";
 import ProjectsBtn from "../../../components/ProjectsBtn";
 import Rounded from "../../../components/common/RoundedButton";
 import Link from "next/link";
@@ -15,7 +15,7 @@ const WorkDetails = () => {
   let slug = pathname?.split("/").pop().replace(/ /g, "-");
   const [project, setProject] = useState(null); // State to store the fetched project
   const [nextProject, setNextProject] = useState(null); // State to store the next project
-  const [videoPlaying ,isVideoPlaying] = useState(null); // State to store
+  const [videoPlaying, isVideoPlaying] = useState(null); // State to store
   useEffect(() => {
     const fetchProject = async () => {
       try {
@@ -82,12 +82,6 @@ const WorkDetails = () => {
     }
   }, [slug]);
 
-  const { scrollYProgress } = useScroll();
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, 50]);
-
-  const { scrollY } = useScroll();
-  const y6 = useTransform(scrollY, [0, 1000], [200, -200]);
   const videoRef = useRef(null);
   const imageRef = useRef(null);
   function handleImageLoad(ref) {
@@ -104,16 +98,16 @@ const WorkDetails = () => {
   }
 
   if (!project) {
-    return <div className="pt-5 h-[100vh]">Loading...</div>; // Or any other loading state representation
+    return <div className="pt-5 h-[100vh]">Loading...</div>;
   }
 
   return (
     <div className="flex flex-col justify-center items-center w-full pt-5 h-full px-[7vw] font-montserrat">
-      <div className="flex flex-col items-start justify-center w-full h-[90vh]">
+      <div className="relative  flex flex-col items-start justify-center w-full pt-[50px] xl:pt-0  h-[90vh]">
         <div
           className="text-center z-10 flex  flex-col
-         align-center gap-4 m-0 justify-end xl:justify-center xl:pt-30
-            xl:text-left h-full"
+         align-center gap-4 m-0 justify-center xl:pt-30
+            xl:text-left xl:h-full"
         >
           <motion.h1
             variants={fadeIn("down", 0.4)}
@@ -131,19 +125,20 @@ const WorkDetails = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-2xl text-[18px]
+            className="w-full text-[18px] xl:pr-[100px]
              xl:text-[1.4vw] leading-tight mx-auto text-white "
           >
             {project.description}
           </motion.p>
         </div>
-        <div className="flex flex-row gap-6 w-full">
-          <div className="flex flex-col gap-0">
+        <div className="flex flex-col justify-center items-center xl:justify-start
+         pt-[50px] xl:pt-0 xl:flex-row gap-6 w-full">
+          <div className="flex flex-col justify-center items-center  xl:items-start gap-0">
             <h1 className="leading-0">ROLE/SERVICES</h1>
             <div className="divider"></div>
             <h1 className="leading-0">{project.services}</h1>
           </div>
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-0 justify-center items-center  xl:items-start">
             <h1 className="leading-0">LOCATION & YEAR</h1>
             <div className="divider"></div>
             <div className="flex flex-row gap-2">
@@ -152,16 +147,24 @@ const WorkDetails = () => {
             </div>
           </div>
         </div>
+        {project.link && (
+          <Link href="/work" className="button text-white hover:text-white">
+            <Rounded className={styles.button}>
+              <p>Live Website</p>
+            </Rounded>
+          </Link>
+        )}
       </div>
 
       <div className="first-image-par w-full flex flex-col">
         {project.image1 && (
           <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
             <motion.div
-              className="relative w-1/4 h-[258px]"
-              variants={slideIn("down", "spring", 0.4, 0.1)}
+              className="relative w-1/4 h-[110px] xl:h-[258px]"
+              variants={fadeIn("down", 0.4)}
               initial="hidden"
-              animate="show"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
               exit="hidden"
             >
               <Image
@@ -171,7 +174,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </motion.div>
-            <div className="relative w-1/2 h-[258px]">
+            <div className="relative w-1/2 h-[110px] xl:h-[258px]">
               <Image
                 src={project.image2}
                 fill
@@ -180,10 +183,11 @@ const WorkDetails = () => {
               />
             </div>
             <motion.div
-              className="relative w-1/4 h-[258px]"
-              initial="initial"
-              animate="scroll"
-              style={{ y: y3 }}
+              className="relative w-1/4 h-[110px] xl:h-[258px]"
+              variants={fadeIn("up", 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
             >
               <Image
                 src={project.image3}
@@ -199,7 +203,7 @@ const WorkDetails = () => {
       <div className="second-image-par w-full flex flex-col pt-[20px]">
         {project.image4 && (
           <div className="three-images flex flex-row w-full gap-5">
-            <div className="relative w-1/2 h-[441px]">
+            <div className="relative w-1/2 h-[210px]  xl:h-[441px]">
               <Image
                 ref={imageRef}
                 src={project.image4}
@@ -208,7 +212,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/2 h-[441px]">
+            <div className="relative w-1/2 h-[210px]  xl:h-[441px]">
               <Image
                 src={project.image5}
                 fill
@@ -220,14 +224,14 @@ const WorkDetails = () => {
         )}
 
         {project.image6 && (
-          <div className="relative w-full h-[90vh] mt-[20px] overflow-hidden">
+          <div className="relative w-full h-[250px] xl:h-[90vh] mt-[20px] overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full">
               <Image
                 ref={imageRef}
                 src={project.image6}
                 fill
                 alt="background image"
-                className="eye object-cover"
+                className="eye object-fill xl:object-cover"
                 onLoadingComplete={() => handleImageLoad(imageRef)}
               />
             </div>
@@ -235,7 +239,7 @@ const WorkDetails = () => {
         )}
 
         {project.image7 && (
-          <div className="relative w-full h-[100vh] mt-[20px] bg-white">
+          <div className="relative w-full h-[250px] xl:h-[100vh] mt-[20px] bg-white">
             <Image
               src={project.image7}
               fill
@@ -263,7 +267,7 @@ const WorkDetails = () => {
               <video
                 ref={videoRef}
                 src={project.video1}
-                autoPlay
+                autoplay
                 loop
                 muted
                 playsInline
@@ -284,7 +288,7 @@ const WorkDetails = () => {
       <div className="third-image-par w-full flex flex-col pt-[20px]">
         {project.image8 && (
           <div className="four-images flex flex-row w-full gap-5">
-            <div className="relative w-1/4 h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
               <Image
                 src={project.image8}
                 fill
@@ -292,7 +296,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/4 h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
               <Image
                 src={project.image9}
                 fill
@@ -300,7 +304,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/4 h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
               <Image
                 src={project.image10}
                 fill
@@ -308,7 +312,7 @@ const WorkDetails = () => {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-1/4 h-[60vh]">
+            <div className="relative w-1/2 xl:w-1/4 h-[150px] xl:h-[60vh]">
               <Image
                 src={project.image11}
                 fill
@@ -319,7 +323,7 @@ const WorkDetails = () => {
           </div>
         )}
         {project.image12 && (
-          <div className="relative w-full h-[100vh] mt-[20px] bg-white">
+          <div className="relative w-full h-[250px] xl:h-[100vh] mt-[20px] bg-white">
             <Image
               src={project.image12}
               fill

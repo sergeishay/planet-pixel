@@ -207,4 +207,9 @@
     transform: translateX(-50%) !important;
     width: 90% !important;
   }
+  .divider {
+    width: 150px;
+    margin: 12px 0; /* Adjust the margin as needed */
+  }
+  
 }

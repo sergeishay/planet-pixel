@@ -12,7 +12,8 @@ const AboutSection = () => {
           <motion.h1
             variants={fadeIn("down", 0.4)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
             exit="hidden"
             className=" text-[30px] xl:text-[3.8vw] px-4 leading-tight z-5 font-medium"
           >
@@ -23,7 +24,8 @@ const AboutSection = () => {
           <motion.p
             variants={fadeIn("down", 0.3)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
             exit="hidden"
             className=" text-[18px] xl:text-[1.2vw]  leading-tight mx-0 text-white xl:mx-[10vw] mb-5"
           >
