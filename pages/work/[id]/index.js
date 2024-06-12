@@ -103,7 +103,7 @@ const WorkDetails = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-full pt-5 h-full px-[7vw] font-montserrat">
-      <div className="relative  flex flex-col items-start justify-center w-full pt-[50px] xl:pt-0  h-[90vh]">
+      <div className="relative  flex flex-col items-start justify-center w-full pt-[100px] xl:pt-0  h-[90vh]">
         <div
           className="text-center z-10 flex  flex-col
          align-center gap-4 m-0 justify-center xl:pt-30
@@ -148,7 +148,7 @@ const WorkDetails = () => {
           </div>
         </div>
         {project.link && (
-          <Link href="/work" className="button text-white hover:text-white">
+          <Link href={project.link} className="button text-white hover:text-white">
             <Rounded className={styles.button}>
               <p>Live Website</p>
             </Rounded>
@@ -266,14 +266,14 @@ const WorkDetails = () => {
             <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%]">
               <video
                 ref={videoRef}
-                src={project.video1}
-                autoPlay="autoplay"
+                autoplay={true}
                 loop = {true}
-                muted
-                playsInLine="playsinline"
+                muted={true}
+                playsinline={true}
                 className="w-full h-full object-cover rounded-[20px]"
-                type="video/mp4"
-              />
+              >
+              <source src={project.video1} type="video/mp4" />
+              </video>
               <button
                 onClick={() => videoRef.current.play()}
                 className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl"
