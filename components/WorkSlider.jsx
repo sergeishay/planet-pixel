@@ -50,17 +50,18 @@ const WorkSlider = ({ projects }) => {
   };
 
   return (
-    <div className={styles.sliderContainer}>
+    <div className={styles.sliderWorkContainer}>
       <Slider {...settings}>
         {projects.map((project) => (
           <div key={project.id} className={styles.projectCard}>
-            <div className={styles.imageContainer}>
+            <div className='relative w-full h-full rounded-[10px]'>
               <Image
                 src={project.thumbnail}
                 alt={project.title}
                 fill
                 style={{ objectFit: "cover" }}
-                className="transition-opacity duration-300 hover:opacity-80"
+                className="transition-opacity duration-300
+                 hover:opacity-80 rounded-[10px]"
               />
             </div>
             <div className={`${styles.overlay} opacity-0 hover:opacity-100 transition-opacity duration-300`}>
