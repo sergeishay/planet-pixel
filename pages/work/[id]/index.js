@@ -131,8 +131,10 @@ const WorkDetails = () => {
             {project.description}
           </motion.p>
         </div>
-        <div className="flex flex-col justify-center items-center xl:justify-start
-         pt-[50px] xl:pt-0 xl:flex-row gap-6 w-full">
+        <div
+          className="flex flex-col justify-center items-center xl:justify-start
+         pt-[50px] xl:pt-0 xl:flex-row gap-6 w-full"
+        >
           <div className="flex flex-col justify-center items-center  xl:items-start gap-0">
             <h1 className="leading-0">ROLE/SERVICES</h1>
             <div className="divider"></div>
@@ -148,7 +150,10 @@ const WorkDetails = () => {
           </div>
         </div>
         {project.link && (
-          <Link href={project.link} className="button text-white hover:text-white">
+          <Link
+            href={project.link}
+            className="button text-white hover:text-white"
+          >
             <Rounded className={styles.button}>
               <p>Live Website</p>
             </Rounded>
@@ -158,7 +163,7 @@ const WorkDetails = () => {
 
       <div className="first-image-par w-full flex flex-col">
         {project.image1 && (
-          <div className="three-images flex flex-row w-full gap-5 mt-[70px]">
+          <div className="three-images flex flex-row w-full gap-1.5 xl:gap-5 mt-[70px]">
             <motion.div
               className="relative w-1/4 h-[90px] xl:h-[258px]"
               variants={fadeIn("down", 0.4)}
@@ -202,7 +207,7 @@ const WorkDetails = () => {
 
       <div className="second-image-par w-full flex flex-col pt-[20px]">
         {project.image4 && (
-          <div className="three-images flex flex-row w-full gap-5">
+          <div className="three-images flex flex-row w-full gap-1.5 xl:gap-5">
             <div className="relative w-1/2 h-[160px]  xl:h-[441px]">
               <Image
                 ref={imageRef}
@@ -267,12 +272,13 @@ const WorkDetails = () => {
               <video
                 ref={videoRef}
                 autoplay={true}
-                loop = {true}
-                muted={true}
-                playsinline={true}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover rounded-[20px]"
               >
-              <source src={project.video1} type="video/mp4" />
+                <source src={project.video1} type="video/mp4" />
               </video>
               <button
                 onClick={() => videoRef.current.play()}
@@ -288,7 +294,7 @@ const WorkDetails = () => {
 
       <div className="third-image-par w-full flex flex-col pt-[20px]">
         {project.image8 && (
-          <div className="four-images flex flex-row w-full gap-2 xl:gap-5">
+          <div className="four-images flex flex-row w-full gap-1.5 xl:gap-5">
             <div className="relative w-1/2 xl:w-1/4 h-[120px] xl:h-[60vh]">
               <Image
                 src={project.image8}
