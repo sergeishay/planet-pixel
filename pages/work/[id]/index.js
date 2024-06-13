@@ -268,8 +268,8 @@ const WorkDetails = () => {
             />
 
             {/* Video */}
-            <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%]">
-              <video
+            {/* <div className="absolute top-[2%] left-[15%] w-[72%] h-[88%]"> */}
+              {/* <video
                 ref={videoRef}
                 autoplay={true}
                 autoPlay
@@ -279,7 +279,23 @@ const WorkDetails = () => {
                 className="w-full h-full object-cover rounded-[20px]"
               >
                 <source src={project.video1} type="video/mp4" />
-              </video>
+              </video> */}
+              <div
+                ref={videoRef}
+                className="absolute top-[2%] left-[15%] w-[72%] h-[88%]"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                       <video
+                         loop
+                      muted
+                      autoplay
+                      playsinline
+                    preload="metadata"
+                    >
+                      <source src="${project.video1}" type="video/mp4" />
+                     </video>`,
+                }}
+              />
               <button
                 onClick={() => videoRef.current.play()}
                 className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white text-2xl"
@@ -287,7 +303,7 @@ const WorkDetails = () => {
               >
                 Play
               </button>
-            </div>
+            {/* </div> */}
           </div>
         </div>
       )}
