@@ -5,8 +5,8 @@ const Avatar = () => {
     <div
       className="relative pt-9 w-full h-full bg-cover bg-heroPanda
       xl:bg-cover
-      xl:bg-backgroundDescNewPande mix-blend-luminosity
-      opacity-60
+      xl:bg-backgroundDescNewPande mix-blend-screen
+      opacity-100
       bg-no-repeat bg-right xl:bg-right
       "
     >

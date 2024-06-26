@@ -31,9 +31,8 @@ export default function RoundedButton({children,backgroundButtonColor, backgroun
     <Magnetic>
       <div
       //  className={styles.roundedButton}
-      className={`${styles.roundedButton} relative flex justify-center items-center py-[10px]
-      px-[40px]
-      xl:py-[15px] xl:px-[60px]  rounded-[3rem] text-white`}
+      className={`${styles.roundedButton} relative flex justify-center items-center py-[10px] px-[40px]
+      xl:py-[15px] xl:px-[60px]  rounded-[3rem] text-white `}
        style={{overflow: "hidden", backgroundColor: "#00C2FF"}}
         onMouseEnter={() => {manageMouseEnter()}}
          onMouseLeave={() => {manageMouseLeave()}} {...attributes}>

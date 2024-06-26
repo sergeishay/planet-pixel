@@ -137,7 +137,7 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className=" text-[30px] xl:text-[3.8vw] leading-tight z-5 font-medium"
+            className=" text-[30px] xl:text-[3.6vw] leading-tight z-5 font-medium"
           >
             <span className={`font-montserrat font-medium`}></span>
             Launch Your Story <br />

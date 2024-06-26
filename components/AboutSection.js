@@ -15,7 +15,7 @@ const AboutSection = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
             exit="hidden"
-            className=" text-[30px] xl:text-[3.8vw] px-4 leading-tight z-5 font-medium"
+            className=" text-[30px] xl:text-[3.6vw] px-4 leading-tight z-5 font-medium"
           >
             {/* <span className={`font-montserrat font-medium`}>T</span> */}
             How Can We{" "}
@@ -27,9 +27,9 @@ const AboutSection = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
             exit="hidden"
-            className=" text-[18px] xl:text-[1.2vw]  leading-tight mx-0 text-white xl:mx-[10vw] mb-5"
+            className=" text-[18px] xl:text-[1.2vw]  leading-tight mx-0 text-white xl:mx-[12vw] mb-5"
           >
-            Dive into our universe of services, where every option is a starlit path to success. Whether it&apos;s web development that defies gravity, social media banners that shine like supernovas, SEO that rockets your visibility, or marketing campaigns that traverse digital galaxies, we&apos;re here to make your online presence as dazzling as a comet&apos;s tail. Let&apos;s craft a digital cosmos that&apos;s uniquely yours.
+            Dive into our universe of services<br></br> where every option is a starlit path to success. Whether it&apos;s web development that defies gravity, social media banners that shine like supernovas, SEO that rockets your visibility, or marketing campaigns that traverse digital galaxies, we&apos;re here to make your online presence as dazzling as a comet&apos;s tail. Let&apos;s craft a digital cosmos that&apos;s uniquely yours.
           </motion.p>
           {/* button */}
           <div className="flex flex-row align-center gap-3 justify-center w-full xl:mb-[100px] ">

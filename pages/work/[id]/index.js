@@ -244,11 +244,12 @@ const WorkDetails = () => {
         )}
 
         {project.image7 && (
-          <div className="relative w-full h-[250px] xl:h-[100vh] mt-[20px] bg-white">
+          <div className="relative w-full h-[250px] xl:h-[90vh] mt-[20px] ">
             <Image
               src={project.image7}
               fill
               alt="third image"
+              quality={100}
               className="object-contain"
             />
           </div>
@@ -288,7 +289,7 @@ const WorkDetails = () => {
                        <video
                          loop
                       muted
-                      autoplay
+                      autoPlay
                       playsinline
                     preload="metadata"
                     >
@@ -346,7 +347,7 @@ const WorkDetails = () => {
           </div>
         )}
         {project.image12 && (
-          <div className="relative w-full h-[250px] xl:h-[100vh] mt-[20px] bg-white">
+          <div className="relative w-full h-[250px] xl:h-[90vh] mt-[20px] ">
             <Image
               src={project.image12}
               fill
